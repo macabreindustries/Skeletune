@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomBarContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Bottom Bar -->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/white"
+        app:fabCradleMargin="12dp"
+        app:fabCradleRoundedCornerRadius="18dp"
+        app:fabCradleVerticalOffset="12dp"
+        app:hideOnScroll="false"
+        app:navigationIcon="@null"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <!-- Floating Button (Centro) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCenter"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_new"
+        app:backgroundTint="@android:color/black"
+        app:layout_anchor="@id/bottomAppBar"
+        app:layout_anchorGravity="center"
+        app:tint="@android:color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

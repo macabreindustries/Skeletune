@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="light_gray">#E0E0E0</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="alumnos">Alumnos</string>
+    <string name="app_name">SkeletuneInicio</string>
+    <string name="assistant">Assitente personalizado</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="canciones">Canciones</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="historial">Clases</string>
+    <string name="imagen_dinamica">Imagen cargada desde el backend</string>
+    <string name="like_song">Dar like a la canción</string>
+    <string name="match_song">Agregar a favoritos la cancion</string>
+    <string name="play_song1">Reproducir canción</string>
+    <string name="racha">Racha</string>
+    <string name="reject_song">Rechazar cancion</string>
+    <string name="skip_song">Saltar canción</string>
+    <string name="texto_legal">
+        Al hacer clic en continuar, aceptas nuestros
+        <font color="#7457F5"> Términos </font> y
+        <font color="#7457F5"> Política de privacidad</font>.
+    </string>
+    <string name="texto_sesion">
+        ¿Ya tienes cuenta?
+        <font color="#7457F5"> Inicia Sesión </font>
+    </string>
+    <style name="Base.Theme.Skletune" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Skeletune" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryVariant">#121212</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        
+        <item name="android:windowBackground">#000000</item>
+    </style>
+    <style name="Theme.Skletune" parent="Base.Theme.Skletune"/>
+    <style name="TituloSeccion">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#1A1A1A</item>
+
+    </style>
+    <style name="crea_una_cu">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="ingresa_tu_">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="keletun">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+</resources>

@@ -1,0 +1,366 @@
+[
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_certifications.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_certifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_userphoto.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\userphoto.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img6.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img6.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_icon1.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\icon1.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_alumno_icon.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\alumno_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_notamusical.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\notamusical.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_profile.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_profile.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_rol_select.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_rol_select.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_item_class_card.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\item_class_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_include_bottom_nav.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\include_bottom_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img2.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img2.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img3.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img3.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_like.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\like.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_comment.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_comment.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_create_user.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_create_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_carru2.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\carru2.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img7.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img7.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_alumno.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_alumno.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_like.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_like.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_borde_placeholder.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\borde_placeholder.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_carru1.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\carru1.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_create_password.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_create_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_save.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_save.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_fondo_edittext.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\fondo_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_carru5.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\carru5.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_historial_icon.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\historial_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_calendar.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_calendar.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_tab_indicator_selector.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\tab_indicator_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img4.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img4.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img1.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img1.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_favorite_icon.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\favorite_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_notifications.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_notifications.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_layout_bottom_app_bar.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\layout_bottom_app_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_estudiante.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\estudiante.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_options_plan.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_options_plan.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_homeprofessor.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_homeprofessor.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_olock.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_olock.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_assitant.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\assitant.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_button1.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\button1.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_icon3.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\icon3.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_profesor.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\profesor.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_history.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_activity_inicio_sesion.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\activity_inicio_sesion.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_button.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\button.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_carru4.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\carru4.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_login.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_img5.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\img5.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_googlelogo.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\googlelogo.png"
+    },
+    {
+        "merged": "com.example.skletune.app-debug-50:/layout_fragment_home.xml.flat",
+        "source": "com.example.skletune.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_imagesocial.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\imagesocial.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_include_toolbar.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\include_toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_search.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_search.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_applelogo.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\applelogo.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_icon.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\icon.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_classes.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_classes.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_field.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\field.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_item_carrusel.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\item_carrusel.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_socialmedia.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_socialmedia.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_division.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\division.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_home.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\navigation\\nav_graph.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\raw_logo_inicio.mp4.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\raw\\logo_inicio.mp4"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_new.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_new.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_music.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_music.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_fondo_boton.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\fondo_boton.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_music.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_music.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_ic_settings.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\ic_settings.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_buttondos.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\buttondos.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\drawable_carru3.png.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\drawable\\carru3.png"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\layout_fragment_alumnos.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\layout\\fragment_alumnos.xml"
+    },
+    {
+        "merged": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-debug-50:\\color_bottom_nav_icon_colors.xml.flat",
+        "source": "C:\\Users\\jesus\\.gradle\\daemon\\8.10.2\\com.example.skletune.app-main-52:\\color\\bottom_nav_icon_colors.xml"
+    }
+]

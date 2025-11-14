@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Skeletune"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:layout_marginTop="150dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:letterSpacing="0.1"/>
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="130dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textSize="15dp"
+        android:text="Selecciona tu rol"
+        android:textColor="#807D7D"/>
+
+    <LinearLayout
+        android:layout_width="314dp"
+        android:layout_height="159dp"
+        android:layout_margin="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="146dp"
+            android:layout_height="132dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/white"
+            android:drawableTop="@drawable/estudiante"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:text="Estudiante"
+            android:id="@+id/botonimgEstu"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:layout_width="146dp"
+            android:layout_height="132dp"
+            android:textColor="@color/black"
+            android:text="Profesor"
+            android:drawableTop="@drawable/profesor"
+            android:backgroundTint="@color/white"
+            android:id="@+id/botonimgProg"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+</LinearLayout>

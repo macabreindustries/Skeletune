@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable field
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id crea_una_cu
+id email_input
+id ingresa_tu_
+id keletun
+id sign_in
+id videoLogo
+layout activity_main
+layout activity_segunda_pantalla
+mipmap ic_launcher
+mipmap ic_launcher_round
+raw logo_inicio
+string app_name
+string crea_una_cu
+string ingresa_tu_
+string keletun
+style Base.Theme.Skeletune
+style Theme.Skeletune
+style crea_una_cu
+style ingresa_tu_
+style keletun
+xml backup_rules
+xml data_extraction_rules
