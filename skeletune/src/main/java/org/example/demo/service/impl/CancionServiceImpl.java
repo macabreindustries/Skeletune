@@ -141,7 +141,7 @@ public class CancionServiceImpl implements CancionService {
         CancionDto dto = new CancionDto();
         BeanUtils.copyProperties(cancion, dto, "admin");
         if (cancion.getAdmin() != null) {
-            dto.setIdAdmin(cancion.getAdmin().getIdUsuario());
+            dto.setIdAdmin(cancion.getAdmin().getId());
         }
         return dto;
     }

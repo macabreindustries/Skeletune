@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/Aldo/api/cancion")
+@RequestMapping("/skeletune/api/cancion")
 public class CancionController {
 
     private final CancionService cancionService;

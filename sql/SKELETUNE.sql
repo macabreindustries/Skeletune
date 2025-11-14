@@ -1,5 +1,5 @@
 -- ============================================================
--- 🚀 BASE DE DATOS: skeletune
+-- BASE DE DATOS: skeletune
 -- Descripción: Plataforma tipo Yousician + Instagram
 -- ============================================================
 
@@ -161,7 +161,7 @@ CREATE TABLE EstadisticaUsuario (
 
 
 -- ============================================================
--- 🔥 🔥 🔥 NUEVAS TABLAS INSTAGRAM + MENSAJERÍA
+-- NUEVAS TABLAS INSTAGRAM + MENSAJERÍA
 -- ============================================================
 
 -- ============================================================
@@ -364,6 +364,11 @@ CREATE TABLE Notificacion (
 -- 1. Insertar un Rol
 INSERT INTO Rol (id_rol, nombre_rol, descripcion) 
 VALUES (1, 'Administrador', 'Control total del sistema y subida de canciones.');
+INSERT INTO Rol (id_rol, nombre_rol, descripcion) 
+VALUES (2, 'Profesor', 'enseñanza.');
+INSERT INTO Rol (id_rol, nombre_rol, descripcion) 
+VALUES (3, 'usuario', 'aprendiz.');
 -- 2. Insertar el Usuario (Admin) que necesitamos en la tabla Cancion
 INSERT INTO Usuario (id_usuario, nombre, correo, contrasena, id_rol) 
 VALUES (1, 'Administrador Principal', 'admin@skeletune.com', 'hashed_password', 1);
+select * from cancion;
