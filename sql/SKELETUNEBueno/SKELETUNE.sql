@@ -361,9 +361,3 @@ CREATE TABLE Notificacion (
         ON DELETE CASCADE
 );
 
--- 1. Insertar un Rol
-INSERT INTO Rol (id_rol, nombre_rol, descripcion) 
-VALUES (1, 'Administrador', 'Control total del sistema y subida de canciones.');
--- 2. Insertar el Usuario (Admin) que necesitamos en la tabla Cancion
-INSERT INTO Usuario (id_usuario, nombre, correo, contrasena, id_rol) 
-VALUES (1, 'Administrador Principal', 'admin@skeletune.com', 'hashed_password', 1);
