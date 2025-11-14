@@ -1,7 +1,6 @@
-// src/main/java/com/teamllaj/skeletune/service/NotificationService.java
-
 package com.teamllaj.skeletune.service;
 
+import com.teamllaj.skeletune.model.entity.NotificationType;
 import com.teamllaj.skeletune.model.entity.NotificationEntity;
 import com.teamllaj.skeletune.model.dto.NotificationDTO;
 import com.teamllaj.skeletune.repository.NotificationRepository;
@@ -21,44 +20,74 @@ public class NotificationService {
         this.notificationRepository = notificationRepository;
     }
 
-    // 1. MÉTODO FALTANTE #1: Obtener todas las notificaciones
     public List<NotificationDTO> getAllNotifications() {
-        return notificationRepository.findAll().stream()
+        return notificationRepository.findAll()
+                .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    // 2. MÉTODO FALTANTE #2: Crear una nueva notificación
     public NotificationDTO createNotification(NotificationEntity notification) {
-        // Establece la hora de creación antes de guardar
-        notification.setCreatedAt(LocalDateTime.now());
+        // CORRECCIÓN 1: Usar setFecha() en lugar de setCreatedAt()
+        if (notification.getFecha() == null) {
+            notification.setFecha(LocalDateTime.now());
+        }
+
+        // CORRECCIÓN 2: Usar el valor por defecto 'SISTEMA' si el tipo no está establecido.
+        if (notification.getTipo() == null) {
+            notification.setTipo(NotificationType.SISTEMA);
+        }
+
         NotificationEntity savedEntity = notificationRepository.save(notification);
         return convertToDTO(savedEntity);
     }
 
-    // Método privado para convertir Entity a DTO y calcular la duración
+    // El método PUT para marcar como leído (si lo tenías, también debes usar el nuevo ID)
+    /*
+    public NotificationDTO markAsRead(Long idNotificacion) {
+        NotificationEntity notification = notificationRepository.findById(idNotificacion)
+            .orElseThrow(() -> new RuntimeException("Notificación no encontrada"));
+
+        notification.setLeido(true);
+        return convertToDTO(notificationRepository.save(notification));
+    }
+    */
+
+
+    // --- Mapper (Conversión Entity a DTO) ---
+
     private NotificationDTO convertToDTO(NotificationEntity entity) {
         NotificationDTO dto = new NotificationDTO();
-        dto.setUsername(entity.getUsername());
-        dto.setNotificationType(entity.getType().name());
-        dto.setMessage(entity.getMessage());
 
-        // CÁLCULO DE DURACIÓN
-        dto.setDuration(calculateDuration(entity.getCreatedAt()));
+        // CORRECCIÓN 3: Usar los nuevos getters
+        dto.setIdNotificacion(entity.getIdNotificacion());
+        dto.setIdUsuario(entity.getIdUsuario()); // Corregido: antes era getUsername()
+        dto.setTipo(entity.getTipo());          // Corregido: antes era getType()
+        dto.setTitulo(entity.getTitulo());
+        dto.setMensaje(entity.getMensaje());    // Corregido: antes era getMessage()
+        dto.setIdReferencia(entity.getIdReferencia());
+        dto.setTablaReferencia(entity.getTablaReferencia());
+        dto.setLeido(entity.getLeido());
+
+        // CORRECCIÓN 4: Usar getFecha() en el cálculo de duración
+        dto.setDuration(calculateDuration(entity.getFecha()));
 
         return dto;
     }
 
-    // Función para calcular y formatear la "duración" (tiempo transcurrido)
+    // El método calculateDuration sigue igual...
     private String calculateDuration(LocalDateTime pastTime) {
+        if (pastTime == null) {
+            return "hace un momento";
+        }
         Duration duration = Duration.between(pastTime, LocalDateTime.now());
 
         if (duration.toDays() > 0) {
-            return "hace " + duration.toDays() + " días";
+            return "hace " + duration.toDays() + (duration.toDays() == 1 ? " día" : " días");
         } else if (duration.toHours() > 0) {
-            return "hace " + duration.toHours() + " horas";
+            return "hace " + duration.toHours() + (duration.toHours() == 1 ? " hora" : " horas");
         } else if (duration.toMinutes() > 0) {
-            return "hace " + duration.toMinutes() + " minutos";
+            return "hace " + duration.toMinutes() + (duration.toMinutes() == 1 ? " minuto" : " minutos");
         } else {
             return "hace un momento";
         }

@@ -6,33 +6,58 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
+// HE QUITADO las siguientes líneas, ya que las clases deberían estar
+// disponibles si están en el mismo paquete:
+// import com.teamllaj.skeletune.model.entity.Usuario;
+// import com.teamllaj.skeletune.model.entity.Media;
+
+
 @Entity
-@Table(name = "messages") // La tabla se llamará 'messages'
+@Table(name = "Mensaje") // 1. Coincide con el nombre de la tabla SQL
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MessageEntity { // Nombre de clase ajustado
+public class MessageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_mensaje") // Mapea al nombre de la columna SQL
+    private Long idMensaje;
 
-    // Nombre de usuario que envía el mensaje
-    @Column(name = "username", nullable = false)
-    private String username;
+    // 2. Relación con el emisor (Foreign Key: id_emisor)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_emisor", nullable = false)
+    private Usuario emisor;
 
-    // El contenido del mensaje (el mensaje en sí)
-    @Column(name = "message_content", nullable = false, columnDefinition = "TEXT")
-    private String messageContent;
+    // 3. Relación con el receptor (Foreign Key: id_receptor)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_receptor", nullable = false)
+    private Usuario receptor;
 
-    // Fecha y hora en que se creó el mensaje (el campo "fecha")
-    @Column(name = "sent_at", nullable = false)
-    private LocalDateTime sentAt = LocalDateTime.now();
+    // 4. Contenido del mensaje
+    @Column(name = "mensaje", columnDefinition = "TEXT")
+    private String mensaje;
 
-    // Constructor para crear nuevos mensajes rápidamente
-    public MessageEntity(String username, String messageContent) {
-        this.username = username;
-        this.messageContent = messageContent;
-        this.sentAt = LocalDateTime.now();
+    // 5. Media opcional (Foreign Key: id_media). ON DELETE SET NULL permite que sea nullable.
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_media", nullable = true) // id_media puede ser NULL
+    private Media media;
+
+    // 6. Fecha de envío (coincide con fecha_envio)
+    @Column(name = "fecha_envio", nullable = false)
+    private LocalDateTime fechaEnvio = LocalDateTime.now();
+
+    // 7. Estado de lectura (visto BOOLEAN)
+    @Column(name = "visto", nullable = false)
+    private Boolean visto = false;
+
+
+    // Constructor conveniente para la creación básica (sin media)
+    public MessageEntity(Usuario emisor, Usuario receptor, String mensaje) {
+        this.emisor = emisor;
+        this.receptor = receptor;
+        this.mensaje = mensaje;
+        this.fechaEnvio = LocalDateTime.now();
+        this.visto = false;
     }
 }

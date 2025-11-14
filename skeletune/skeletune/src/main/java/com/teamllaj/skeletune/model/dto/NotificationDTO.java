@@ -1,18 +1,19 @@
 package com.teamllaj.skeletune.model.dto;
 
-import lombok.Data;          // Incluye Getter y Setter
-import lombok.NoArgsConstructor; // Constructor sin argumentos (Soluciona el error en el Service)
-import lombok.AllArgsConstructor; // Constructor con todos los argumentos
+import com.teamllaj.skeletune.model.entity.NotificationType;
+import lombok.Data;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class NotificationDTO {
+    // Renombramos el ID y el usuario
+    private Long idNotificacion;
+    private Integer idUsuario;
 
-    private String username;
-    // Usamos String para Like, Comentario, Favoritos
-    private String notificationType;
-    private String message;
-    // Campo para mostrar el tiempo transcurrido (e.g., "hace 5 minutos")
-    private String duration;
+    private NotificationType tipo;
+    private String titulo;
+    private String mensaje;
+    private Integer idReferencia;
+    private String tablaReferencia;
+    private String duration; // Para la fecha
+    private Boolean leido;
 }
