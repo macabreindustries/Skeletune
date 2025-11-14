@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_music_swipe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- ENCABEZADO -->
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MusicSwipe"
+        android:textStyle="bold|italic"
+        android:fontFamily="cursive"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/app_title_slogan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descubre tu proxima cancion favorita"
+        android:textSize="18sp"
+        android:textColor="#333222"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/app_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- IMAGEN DEL ÁLBUM -->
+    <ImageView
+        android:id="@+id/image_album"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:background="@drawable/borde_placeholder"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/imagen_dinamica"
+        app:layout_constraintTop_toBottomOf="@id/app_title_slogan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_marginTop="16dp" />
+
+    <!-- NOMBRE DE CANCIÓN -->
+    <TextView
+        android:id="@+id/song_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Midnight Dreams"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/image_album"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- ARTISTA -->
+    <TextView
+        android:id="@+id/artist_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="The Weeknd"
+        android:textColor="#6A7282"
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/song_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- BARRA DE PROGRESO -->
+    <SeekBar
+        android:id="@+id/progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#FF0000"
+        android:thumb="@null"
+        app:layout_constraintTop_toBottomOf="@id/artist_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- BOTONES DE ACCIÓN (Reproducir, Like, Skip) -->
+    <LinearLayout
+        android:id="@+id/actions_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <ImageButton
+            android:id="@+id/button_skip"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="32dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/skip_song"
+            android:src="@drawable/icon3" />
+
+        <ImageButton
+            android:id="@+id/button_like"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="32dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/like_song"
+            android:src="@drawable/button" />
+
+        <ImageButton
+            android:id="@+id/button_play"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/play_song1"
+            android:src="@drawable/icon1" />
+    </LinearLayout>
+
+    <!-- BOTONES SWIPE (Match / Rechazar) -->
+    <LinearLayout
+        android:id="@+id/swipe_buttons_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/actions_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp">
+
+        <ImageButton
+            android:id="@+id/button_reject"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="32dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/reject_song"
+            android:scaleType="centerInside"
+            android:src="@drawable/button1" />
+
+        <ImageButton
+            android:id="@+id/button_match"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/white"
+            android:contentDescription="@string/match_song"
+            android:scaleType="centerInside"
+            android:src="@drawable/like" />
+    </LinearLayout>
+
+    <!-- CONTADORES DE INTERACCIÓN -->
+    <LinearLayout
+        android:id="@+id/stats_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/likes_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="❤️ 1.2K Likes"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/views_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👁 8.5K Views"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/swipes_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🔁 400 Swipes"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
