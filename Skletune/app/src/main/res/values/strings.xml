@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">SkeletuneInicio</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="texto_legal">
+        Al hacer clic en continuar, aceptas nuestros
+        <font color="#7457F5"> Términos </font> y
+        <font color="#7457F5"> Política de privacidad</font>.
+    </string>
+    <string name="texto_sesion">
+        ¿Ya tienes cuenta?
+        <font color="#7457F5"> Inicia Sesión </font>
+    </string>
+    <string name="imagen_dinamica">Imagen cargada desde el backend</string>
+    <string name="like_song">Dar like a la canción</string>
+    <string name="play_song1">Reproducir canción</string>
+    <string name="skip_song">Saltar canción</string>
+    <string name="reject_song">Rechazar cancion</string>
+    <string name="match_song">Agregar a favoritos la cancion</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="canciones">Canciones</string>
+    <string name="historial">Clases</string>
+    <string name="racha">Racha</string>
+    <string name="assistant">Assitente personalizado</string>
+    <string name="alumnos">Alumnos</string>
+
+
+</resources>

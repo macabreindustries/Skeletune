@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_asistente_ia_modal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    android:background="#80000000">
+
+    <!-- CARD PRINCIPAL DEL CHAT -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_chat_window"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="70dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#2C2C2E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ENCABEZADO -->
+            <LinearLayout
+                android:id="@+id/header_assistant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="12dp">
+
+                <ImageView
+                    android:id="@+id/image_assistant_avatar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/assistantavatar"
+                    android:contentDescription="avatar"
+                    android:layout_marginEnd="12dp"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_assistant_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JALL"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="#FFFFFF"/>
+
+                    <TextView
+                        android:id="@+id/text_assistant_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="En línea"
+                        android:textSize="14sp"
+                        android:textColor="#A3FFB3"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- PESTAÑAS -->
+            <LinearLayout
+                android:id="@+id/layout_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/button_tab_chat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Chat"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:drawablePadding="6dp"
+                    android:drawableStart="@drawable/ic_chat"/>
+
+                <TextView
+                    android:id="@+id/button_tab_voice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Voz"
+                    android:textColor="#FFFFFF"
+                    android:drawableStart="@drawable/ic_voz"
+                    android:drawablePadding="6dp"/>
+
+            </LinearLayout>
+
+            <!-- SEPARADOR -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#4A4A4A"/>
+
+            <!-- RECYCLERVIEW DE MENSAJES -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_chat"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"/>
+
+            <!-- BARRA DE MENSAJE -->
+            <RelativeLayout
+                android:id="@+id/layout_chat_input"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/input"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <EditText
+                    android:id="@+id/edit_text_chat_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/button_send_message"
+                    android:hint="Escribe tu mensaje..."
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#000000"
+                    android:paddingEnd="48dp"
+                    android:background="@android:color/transparent"
+                    android:maxLines="4"
+                    android:inputType="textMultiLine"/>
+
+                <ImageButton
+                    android:id="@+id/button_send_message"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_send"
+                    app:tint="#000000"
+                    android:contentDescription="Enviar mensaje"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- BOTÓN DE CERRAR (EXTERNO) -->
+    <ImageButton
+        android:id="@+id/button_close_chat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_backtache"
+        app:tint="#A52019"
+        android:contentDescription="Cerrar chat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

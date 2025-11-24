@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sign_in"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Logo o título -->
+    <TextView
+        android:id="@+id/keletun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/keletun"
+        android:textAppearance="@style/keletun"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="136dp"
+        android:gravity="center"/>
+
+    <!-- Subtítulo -->
+    <TextView
+        android:id="@+id/crea_una_cu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crea_una_cu"
+        android:textAppearance="@style/crea_una_cu"
+        android:layout_below="@id/keletun"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Instrucción de correo -->
+    <TextView
+        android:id="@+id/ingresa_tu_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ingresa_tu_"
+        android:textAppearance="@style/ingresa_tu_"
+        android:layout_below="@id/crea_una_cu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Campo de correo -->
+    <EditText
+        android:id="@+id/email_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ingresa_tu_"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/field"
+        android:padding="8dp"
+        android:hint="Correo electrónico"/>
+
+</RelativeLayout>

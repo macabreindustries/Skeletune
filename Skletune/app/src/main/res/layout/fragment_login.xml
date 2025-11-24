@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".InicioSesion">
+
+
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Skeletune"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:letterSpacing="0.1"/>
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="Inicio de Sesión"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/correoelectronico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa tu correo electronico o usuario"
+        android:background="@drawable/fondo_edittext"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#9E9E9E"
+        android:inputType="textEmailAddress"
+        android:layout_margin="16dp"/>
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa tu contraseña"
+        android:background="@drawable/fondo_edittext"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#9E9E9E"
+        android:inputType="textEmailAddress"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/botonarol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#292C3D"
+        android:text="Continuar"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:cornerRadius="8dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/division"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#EEEEEE"
+        android:textAlignment="viewStart"
+        android:text="Continuar con Google"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/googlelogo"
+        android:textSize="16dp"
+        app:cornerRadius="8dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonApple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#EEEEEE"
+        android:textAlignment="viewStart"
+        android:text="Continuar con Apple"
+        android:drawableLeft="@drawable/applelogo"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:cornerRadius="8dp" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="@string/texto_legal"
+        android:textSize="15dp" />
+
+
+
+
+
+</LinearLayout>
