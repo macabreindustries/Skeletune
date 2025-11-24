@@ -1,0 +1,147 @@
+{
+  "idCancion": 1,
+  "nombreCancion": "Blinding Lights",
+  "dificultad": "facil",
+  "numPistas": 4,
+  "createdBy": "Aldo",
+  "speedMultiplier": 10,
+  "notas": [
+    { "tiempoMs": 1500, "carril": 2, "duracionMs": 2000, "tipo": "hold" },
+    { "tiempoMs": 6500, "carril": 3, "duracionMs": 2000, "tipo": "hold" },
+    
+    { "tiempoMs": 11200, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 11550, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 11900, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 12250, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 12600, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 12950, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 13300, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 13650, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 16800, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 17150, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 17500, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 17850, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 18200, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 18550, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 19250, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 25200, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 25550, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 25900, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 26250, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 26600, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 26600, "carril": 3, "tipo": "normal" },
+
+    { "tiempoMs": 30800, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 31150, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 31500, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 31850, "carril": 4, "tipo": "normal" },
+    
+    { "tiempoMs": 39200, "carril": 2, "tipo": "normal" }, 
+    { "tiempoMs": 39550, "carril": 3, "tipo": "normal" }, 
+    { "tiempoMs": 39900, "carril": 2, "tipo": "normal" }, 
+    { "tiempoMs": 40250, "carril": 1, "tipo": "normal" }, 
+
+    { "tiempoMs": 44800, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 45150, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 45500, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 45850, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 53200, "carril": 1, "duracionMs": 1000, "tipo": "hold" },
+    { "tiempoMs": 54600, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 54950, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 56000, "carril": 4, "tipo": "normal" },
+    
+    { "tiempoMs": 61600, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 61950, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 62300, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 62650, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 63000, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 67200, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 67200, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 67550, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 67900, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 68250, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 68600, "carril": 1, "tipo": "normal" },
+    
+    { "tiempoMs": 72800, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 72800, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 73150, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 73500, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 73850, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 74200, "carril": 2, "tipo": "normal" },
+
+    { "tiempoMs": 81200, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 81550, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 81900, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 82250, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 82600, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 82950, "carril": 3, "tipo": "normal" },
+
+    { "tiempoMs": 95200, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 95550, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 95900, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 96250, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 109200, "carril": 1, "duracionMs": 1000, "tipo": "hold" },
+    { "tiempoMs": 110600, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 110950, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 111300, "carril": 4, "tipo": "normal" },
+
+    { "tiempoMs": 123200, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 123200, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 123550, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 123900, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 124250, "carril": 2, "tipo": "normal" },
+
+    { "tiempoMs": 128800, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 128800, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 129150, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 129500, "carril": 4, "tipo": "normal" },
+
+    { "tiempoMs": 137200, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 137550, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 137900, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 138250, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 138600, "carril": 1, "duracionMs": 2000, "tipo": "hold" },
+
+    { "tiempoMs": 142800, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 143150, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 143500, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 143850, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 151200, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 151550, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 151900, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 152250, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 152600, "carril": 1, "tipo": "normal" },
+
+    { "tiempoMs": 165200, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 165200, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 165550, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 165900, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 166250, "carril": 2, "tipo": "normal" },
+    
+    { "tiempoMs": 170800, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 170800, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 171150, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 171500, "carril": 4, "tipo": "normal" },
+
+    { "tiempoMs": 179200, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 179550, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 179900, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 180250, "carril": 4, "tipo": "normal" },
+    { "tiempoMs": 180600, "carril": 1, "tipo": "normal" },
+    
+    { "tiempoMs": 184800, "carril": 1, "tipo": "normal" },
+    { "tiempoMs": 185150, "carril": 2, "tipo": "normal" },
+    { "tiempoMs": 185500, "carril": 3, "tipo": "normal" },
+    { "tiempoMs": 185850, "carril": 4, "tipo": "normal" },
+
+    { "tiempoMs": 190400, "carril": 1, "duracionMs": 1500, "tipo": "hold" },
+    { "tiempoMs": 190400, "carril": 4, "duracionMs": 1500, "tipo": "hold" },
+    { "tiempoMs": 191900, "carril": 3, "tipo": "normal" }
+  ]
+}
