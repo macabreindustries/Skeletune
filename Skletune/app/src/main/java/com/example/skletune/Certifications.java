@@ -12,12 +12,9 @@ import android.widget.Button;
 
 public class Certifications extends Fragment {
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -30,10 +27,15 @@ public class Certifications extends Fragment {
             // Crear el fragmento destino
             homeprofessor fragmentDestino = new homeprofessor();
 
-            // Reemplazar el fragmento actual por el destino
+            // Reemplazar el fragmento en el contenedor correcto
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(android.R.id.content, fragmentDestino);
-            transaction.addToBackStack(null); // Opcional: permite volver atrás con el botón "atrás"
+
+            // CRÍTICO: Usar R.id.fragment_container en lugar de android.R.id.content
+            transaction.replace(R.id.fragment_container, fragmentDestino);
+
+            // NO usar addToBackStack para que no pueda volver a Certifications
+            // transaction.addToBackStack(null);
+
             transaction.commit();
         });
 

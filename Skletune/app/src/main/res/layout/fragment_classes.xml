@@ -1,77 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="36dp">
+    android:layout_height="match_parent">
 
-    <!-- ENCABEZADO -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_dashboard_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@android:color/white">
 
-    <!-- BUSCADOR -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_dashboard_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tv_header"
+            <TextView
+                android:id="@+id/text_app_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Skeletune"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_user_avatar"
+                app:layout_constraintHorizontal_bias="0"/>
+
+
+
+            <TextView
+                android:id="@+id/text_dashboard_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Clases en Línea"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/text_app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"
+                tools:text="Clases en Línea"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_proxima_clase"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#1C1C1E"
+                app:layout_constraintTop_toBottomOf="@id/text_dashboard_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/text_proxima_clase_hora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hoy 14:00"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:background="#626262"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Hoy 14:00"/>
+
+                    <TextView
+                        android:id="@+id/text_proxima_clase_titulo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Acordes"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/text_proxima_clase_hora"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/image_proxima_clase_instructor"
+                        android:layout_marginTop="8dp"
+                        tools:text="Acordes"/>
+
+                    <ImageView
+                        android:id="@+id/image_proxima_clase_instructor"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_instructor_avatar"
+                        android:contentDescription="Avatar instructor"
+                        app:layout_constraintTop_toTopOf="@id/text_proxima_clase_titulo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/text_proxima_clase_titulo"
+                        android:layout_marginStart="8dp" />
+
+                    <TextView
+                        android:id="@+id/text_proxima_clase_instructor_nombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Elynn Lee"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_proxima_clase_titulo"
+                        android:layout_marginTop="8dp"
+                        tools:text="Elynn Lee"/>
+
+                    <TextView
+                        android:id="@+id/text_proxima_clase_detalles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="60 minutos • Teoría y Práctica"
+                        android:textColor="#BDBDBD"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@id/text_proxima_clase_instructor_nombre"
+                        app:layout_constraintTop_toTopOf="@id/text_proxima_clase_instructor_nombre"
+                        android:layout_marginStart="8dp"
+                        tools:text="60 minutos • Teoría y Práctica"/>
+
+                    <Button
+                        android:id="@+id/button_iniciar_clase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iniciar"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/text_proxima_clase_detalles"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:backgroundTint="@android:color/white"
+                        android:textColor="#000000"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/text_label_siguientes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clases:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@id/card_proxima_clase"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_clases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_label_siguientes"
+                tools:listitem="@layout/item_class_card" />
+
+            <TextView
+                android:id="@+id/text_label_resumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resumen de Alumnos"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_clases"
+                android:layout_marginTop="14dp"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_resumen_alumnos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:layout_constraintTop_toBottomOf="@id/text_label_resumen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/text_resumen_total_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                tools:text="12"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="alumnos"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/text_resumen_semana_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                tools:text="18"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="clases"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/text_resumen_horas_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="24"
+                                android:textStyle="bold"
+                                android:textSize="18sp"
+                                tools:text="24"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="totales"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/text_label_top_alumnos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Alumnos"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                app:layout_constraintTop_toBottomOf="@id/card_resumen_alumnos"
+                android:layout_marginTop="14dp"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_top_alumnos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/text_label_top_alumnos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                tools:listitem="@layout/item_top_alumno" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_top_alumnos"
+                android:layout_marginBottom="8dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:text="Mis Clases"
-        android:textColor="#000000"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:contentDescription="Agregar nuevo elemento"
+        app:tint="@android:color/white"
+        app:backgroundTint="@android:color/black"
+        app:srcCompat="@drawable/ic_newpublication" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_search"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="2dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_search"
-                android:contentDescription="Buscar"/>
-
-            <EditText
-                android:id="@+id/et_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:hint="Buscar clase..."
-                android:textSize="16sp"
-                android:background="@null"/>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- LISTA DE CLASES (DINÁMICA) -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_classes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_search"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_class_card" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

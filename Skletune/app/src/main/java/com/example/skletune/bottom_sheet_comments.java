@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class music extends Fragment {
 
-
+public class bottom_sheet_comments extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +21,6 @@ public class music extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_music, container, false);
+        return inflater.inflate(R.layout.fragment_bottom_sheet_comments, container, false);
     }
 }

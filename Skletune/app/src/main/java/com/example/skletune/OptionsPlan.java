@@ -1,14 +1,15 @@
 package com.example.skletune;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class OptionsPlan extends Fragment {
 
@@ -36,19 +37,26 @@ public class OptionsPlan extends Fragment {
         // Listener general para los botones
         View.OnClickListener listener = v -> {
 
-            Fragment fragmentDestino;
+            // Aquí puedes guardar el plan seleccionado (Basic o Premium)
+            String planSeleccionado = (v.getId() == R.id.btnBasic) ? "Basic" : "Premium";
 
-            if (rolSeleccionado.equals("estudiante")) {
-                fragmentDestino = new home();
-            }
-            else {
-                fragmentDestino = new Certifications();
-            }
+            // Guardar en SharedPreferences o donde necesites
+            // SharedPreferences prefs = getActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+            // prefs.edit().putString("rol", rolSeleccionado).putString("plan", planSeleccionado).apply();
 
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(android.R.id.content, fragmentDestino);
-            transaction.addToBackStack(null);
-            transaction.commit();
+            Toast.makeText(getContext(),
+                    "Rol: " + rolSeleccionado + " | Plan: " + planSeleccionado,
+                    Toast.LENGTH_SHORT).show();
+
+            // Navegar a NavigationHostActivity
+            Intent intent = new Intent(getActivity(), NavigationHostActivity.class);
+            intent.putExtra("rol", rolSeleccionado);
+            intent.putExtra("plan", planSeleccionado);
+            startActivity(intent);
+
+            if (getActivity() != null) {
+                getActivity().finish(); // Cierra InicioSesion
+            }
         };
 
         botonBasic.setOnClickListener(listener);

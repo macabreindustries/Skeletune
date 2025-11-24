@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_nueva_publicacion"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#1C1C1C"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Botón Atrás -->
+        <ImageButton
+            android:id="@+id/btn_atras"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Atrás"
+            android:src="@drawable/ic_return"
+            app:tint="#FFFFFF"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tv_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nueva publicación"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Botón Siguiente -->
+        <TextView
+            android:id="@+id/btn_siguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            android:textColor="#0095F6"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_nueva_publicacion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <!-- Imagen en Miniatura -->
+                <ImageView
+                    android:id="@+id/iv_miniatura"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    android:background="#2D2D2D"
+                    android:contentDescription="Imagen de publicación"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <!-- Campo de Texto (Caption) -->
+                <EditText
+                    android:id="@+id/et_caption"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="60dp"
+                    android:hint="Escribe un pie de foto..."
+                    android:textColorHint="#666666"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:background="@android:color/transparent"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:maxLines="5"
+                    android:padding="8dp"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toEndOf="@+id/iv_miniatura"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_miniatura" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#2D2D2D"
+                android:layout_marginHorizontal="16dp" />
+
+            <!-- Agregar Emoji -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/option_agregar_emoji"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/icon_emoji"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_happy"
+                    app:tint="#CCCCCC"
+                    android:contentDescription="Emoji"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agregar emoji"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/icon_emoji"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#2D2D2D"
+                android:layout_marginHorizontal="16dp" />
+
+            <!-- Agregar Ubicación -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/option_agregar_ubicacion"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/icon_ubicacion"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_ubi"
+                    app:tint="#CCCCCC"
+                    android:contentDescription="Ubicación"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agregar ubicación"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/icon_ubicacion"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#2D2D2D"
+                android:layout_marginHorizontal="16dp" />
+
+            <!-- Etiquetar Personas -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/option_etiquetar_personas"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Etiquetar personas"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/chevron_personas"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:id="@+id/chevron_personas"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text=">"
+                    android:textColor="#666666"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:contentDescription="Navegar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#2D2D2D"
+                android:layout_marginHorizontal="16dp" />
+
+            <!-- Agregar Música -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/option_agregar_musica"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Agregar música"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/chevron_music"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:id="@+id/chevron_music"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text=">"
+                    android:textColor="#666666"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:contentDescription="Navegar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#2D2D2D"
+                android:layout_marginHorizontal="16dp" />
+
+            <!-- Configuración Avanzada -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/option_configuracion_avanzada"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Configuración avanzada"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/chevron_configuracion"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:id="@+id/chevron_configuracion"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text=">"
+                    android:textColor="#666666"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:contentDescription="Navegar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#2D2D2D"
+                android:layout_marginHorizontal="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

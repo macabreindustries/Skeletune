@@ -36,6 +36,6 @@ public class splash extends AppCompatActivity {
     private void navigateToLogin() {
         Intent intent = new Intent(splash.this, InicioSesion.class);
         startActivity(intent);
-        finish(); // Evita que el usuario regrese al splash
+        finish();
     }
 }

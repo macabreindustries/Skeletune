@@ -21,14 +21,12 @@ public class home extends Fragment {
 
     private Handler handler = new Handler();
     private Runnable runnable;
-
     private ViewPager2 viewPagerCarousel;
     private TabLayout tabIndicator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -36,10 +34,6 @@ public class home extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        // -----------------------------
-        // 1. CONFIGURAR CARRUSEL
-        // -----------------------------
 
         viewPagerCarousel = view.findViewById(R.id.vp_carousel);
         tabIndicator = view.findViewById(R.id.tab_carousel_indicator);
@@ -61,10 +55,7 @@ public class home extends Fragment {
                 (tab, position) -> {
                 }).attach();
 
-
-        // -----------------------------
-        // AUTO-SCROLL CADA 4 SEGUNDOS
-        // -----------------------------
+        // Auto-scroll del carrusel
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -91,33 +82,29 @@ public class home extends Fragment {
             }
         });
 
-
-        // -----------------------------
-        // BOTONES DE NAVEGACIÓN
-        // -----------------------------
+        // IMPORTANTE: Usar R.id.fragment_container en lugar de android.R.id.content
         LinearLayout btnSongs = view.findViewById(R.id.btn_songs);
-
         btnSongs.setOnClickListener(v -> {
-            music songsFragment = new music();
+            music musicFragment = new music();
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(android.R.id.content, songsFragment);
+            // Usar el contenedor correcto para mantener la barra de navegación visible
+            transaction.replace(R.id.fragment_container, musicFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         });
 
-        LinearLayout btnHistory = view.findViewById(R.id.btn_history);
-
-        btnHistory.setOnClickListener(v -> {
-            history songsFragment = new history();
+        LinearLayout btnClasses = view.findViewById(R.id.btn_history);
+        btnClasses.setOnClickListener(v -> {
+            classes classesFragment = new classes();
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(android.R.id.content, songsFragment);
+            // Usar el contenedor correcto para mantener la barra de navegación visible
+            transaction.replace(R.id.fragment_container, classesFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         });
 
         return view;
     }
-
 
     @Override
     public void onPause() {
@@ -132,4 +119,9 @@ public class home extends Fragment {
         handler.postDelayed(runnable, 4000);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        handler.removeCallbacks(runnable);
+    }
 }
