@@ -463,7 +463,7 @@ INSERT INTO Media (id_usuario, tipo, url_archivo, descripcion) VALUES
 
 -- 4) Canciones (ambas canciones serán usadas por los minijuegos)
 INSERT INTO Cancion (titulo, artista, dificultad, url_audio, url_partitura, imagen_url, id_admin) VALUES
-('Midnight Dreams', 'The Weeknd', 'media', '/audio/The Weeknd - Blinding Lights (Official Audio).mp3', '/scores/midnight_dreams.pdf', '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png',
+('Blinding Lights', 'The Weeknd', 'media', '/audio/The Weeknd - Blinding Lights (Official Audio).mp3', '/scores/midnight_dreams.pdf', 'https://st1.uvnimg.com/31/a6/5af29f294a26805fb7bb5fb78852/17-the-weeknd.jpg',
  (SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1)),
 ('Ocean Waves', 'Frank Ocean', 'facil', '/audio/ocean_waves.mp3', '/scores/ocean_waves.pdf', '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png',
  (SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1));
