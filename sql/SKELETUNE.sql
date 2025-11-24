@@ -471,25 +471,8 @@ INSERT INTO Cancion (titulo, artista, dificultad, url_audio, url_partitura, imag
 
 -- 5) Charts mínimos (uno por canción, 4 pistas fijas)
 INSERT INTO ChartMania (id_cancion, dificultad, speed_multiplier, num_pistas, created_by) VALUES
-((SELECT id_cancion FROM Cancion WHERE titulo='Midnight Dreams' LIMIT 1), 'media', 1.0, 4, (SELECT id_usuario FROM Usuario WHERE correo='profesor@skeletune.com' LIMIT 1)),
-((SELECT id_cancion FROM Cancion WHERE titulo='Ocean Waves' LIMIT 1), 'facil', 1.0, 4, (SELECT id_usuario FROM Usuario WHERE correo='profesor@skeletune.com' LIMIT 1));
+((SELECT id_cancion FROM Cancion WHERE titulo='Blinding Lights' LIMIT 1), 'media', 1.0, 4, (SELECT id_usuario FROM Usuario WHERE correo='profesor@skeletune.com' LIMIT 1));
 
--- 6) Notas demo (pequeña secuencia). usamos la imagen subida como ejemplo para la primera nota
-INSERT INTO NotaMania (id_chart_mania, tiempo_ms, carril, duracion_ms, imagen_url, tipo) VALUES
-((SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Midnight Dreams') LIMIT 1), 0, 1, 0, '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png', 'normal'),
-((SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Midnight Dreams') LIMIT 1), 500, 2, 0, NULL, 'normal'),
-((SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Midnight Dreams') LIMIT 1), 1000, 3, 0, NULL, 'normal'),
-((SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Midnight Dreams') LIMIT 1), 1500, 4, 400, NULL, 'hold'),
-
-((SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Ocean Waves') LIMIT 1), 0, 1, 0, '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png', 'normal'),
-((SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Ocean Waves') LIMIT 1), 600, 2, 0, NULL, 'normal');
-
--- 7) Partida demo (usuario juega chart)
-INSERT INTO PartidaMania (id_usuario, id_chart_mania, puntaje, accuracy, combo_max, perfects, greats, goods, misses, detalles) VALUES
-((SELECT id_usuario FROM Usuario WHERE correo='user@skeletune.com' LIMIT 1),
- (SELECT id_chart_mania FROM ChartMania WHERE id_cancion = (SELECT id_cancion FROM Cancion WHERE titulo='Midnight Dreams') LIMIT 1),
- 87000, 96.00, 120, 80, 30, 5, 0,
- JSON_OBJECT('note_count', 115));
 
 -- 8) Fallos asociados a la partida (si los hubo)
 INSERT INTO FalloMania (id_partida_mania, tiempo_ms, tipo, desviacion_ms) VALUES
