@@ -1,9 +1,11 @@
 package org.example.demo.service.impl.juego;
 
 import org.example.demo.dto.juego.ChartManiaDto;
+import org.example.demo.dto.juego.NotaManiaDto;
 import org.example.demo.model.Cancion;
 import org.example.demo.model.Usuario;
 import org.example.demo.model.juego.ChartMania;
+import org.example.demo.model.juego.NotaMania;
 import org.example.demo.repository.CancionRepository;
 import org.example.demo.repository.UsuarioRepository;
 import org.example.demo.repository.juego.ChartManiaRepository;
@@ -93,6 +95,7 @@ public class ChartManiaServiceImpl implements ChartManiaService {
                 usuarioRepository.findById(((Number) updates.get("createdBy")).intValue())
                         .ifPresent(chartManiaToUpdate::setCreatedBy);
             }
+            // No se maneja la lista de notas directamente en patch, ya que se gestiona a través de la relación
 
             ChartMania updatedChartMania = chartManiaRepository.save(chartManiaToUpdate);
             return convertToDto(updatedChartMania);
@@ -131,6 +134,12 @@ public class ChartManiaServiceImpl implements ChartManiaService {
             dto.setCreatedBy(chartMania.getCreatedBy().getId());
         }
         dto.setFechaCreacion(chartMania.getFechaCreacion());
+        // Convertir la lista de NotaMania a NotaManiaDto
+        if (chartMania.getNotas() != null) {
+            dto.setNotas(chartMania.getNotas().stream()
+                    .map(this::convertNotaManiaToDto)
+                    .collect(Collectors.toList()));
+        }
         return dto;
     }
 
@@ -147,6 +156,12 @@ public class ChartManiaServiceImpl implements ChartManiaService {
             usuarioRepository.findById(dto.getCreatedBy()).ifPresent(chartMania::setCreatedBy);
         }
         chartMania.setFechaCreacion(dto.getFechaCreacion());
+        // Convertir la lista de NotaManiaDto a NotaMania y establecer la relación inversa
+        if (dto.getNotas() != null) {
+            chartMania.setNotas(dto.getNotas().stream()
+                    .map(notaDto -> convertNotaManiaToEntity(notaDto, chartMania))
+                    .collect(Collectors.toList()));
+        }
         return chartMania;
     }
 
@@ -160,5 +175,45 @@ public class ChartManiaServiceImpl implements ChartManiaService {
         if (dto.getCreatedBy() != null) {
             usuarioRepository.findById(dto.getCreatedBy()).ifPresent(chartMania::setCreatedBy);
         }
+        // Actualizar la lista de notas
+        if (dto.getNotas() != null) {
+            chartMania.getNotas().clear(); // Limpiar las notas existentes
+            for (NotaManiaDto notaDto : dto.getNotas()) {
+                NotaMania nota = convertNotaManiaToEntity(notaDto, chartMania);
+                chartMania.getNotas().add(nota);
+            }
+        }
+    }
+
+    // Métodos auxiliares para convertir NotaMania
+    private NotaManiaDto convertNotaManiaToDto(NotaMania notaMania) {
+        NotaManiaDto dto = new NotaManiaDto();
+        dto.setIdNotaMania(notaMania.getIdNotaMania());
+        // No establecer idChartMania aquí para evitar recursión infinita
+        dto.setTiempoMs(notaMania.getTiempoMs());
+        dto.setCarril(notaMania.getCarril());
+        dto.setDuracionMs(notaMania.getDuracionMs());
+        if (notaMania.getImagenMedia() != null) {
+            dto.setImagenMediaId(notaMania.getImagenMedia().getIdMedia());
+        }
+        dto.setTipo(notaMania.getTipo());
+        return dto;
+    }
+
+    private NotaMania convertNotaManiaToEntity(NotaManiaDto dto, ChartMania chartMania) {
+        NotaMania notaMania = new NotaMania();
+        notaMania.setIdNotaMania(dto.getIdNotaMania());
+        notaMania.setChartMania(chartMania); // Establecer la relación inversa
+        notaMania.setTiempoMs(dto.getTiempoMs());
+        notaMania.setCarril(dto.getCarril());
+        notaMania.setDuracionMs(dto.getDuracionMs());
+        if (dto.getImagenMediaId() != null) {
+            // Aquí necesitarías un MediaRepository para buscar la entidad Media
+            // Por simplicidad, asumimos que el ID es suficiente o que Media se gestiona por separado
+            // Si necesitas cargar la entidad Media, inyecta MediaRepository y úsalo aquí
+            // mediaRepository.findById(dto.getImagenMediaId()).ifPresent(notaMania::setImagenMedia);
+        }
+        notaMania.setTipo(dto.getTipo());
+        return notaMania;
     }
 }

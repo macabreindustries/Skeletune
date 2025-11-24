@@ -29,6 +29,9 @@ public interface CancionRepository extends JpaRepository<Cancion, Integer> {
 
     @Query("SELECT DISTINCT c.urlPartitura FROM Cancion c")
     List<String> findAllUrlPartituras();
+
+    @Query("SELECT DISTINCT c.imagenUrl FROM Cancion c") // Nuevo método
+    List<String> findAllImagenUrls();
     
     List<Cancion> findByTituloContainingIgnoreCase(String titulo);
     
@@ -39,4 +42,6 @@ public interface CancionRepository extends JpaRepository<Cancion, Integer> {
     List<Cancion> findByUrlAudio(String urlAudio);
     
     List<Cancion> findByUrlPartitura(String urlPartitura);
+
+    List<Cancion> findByImagenUrl(String imagenUrl); // Nuevo método
 }

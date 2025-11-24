@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.example.demo.model.Media;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import com.fasterxml.jackson.annotation.JsonBackReference; // IMPORTANTE
 
 @Data
 @NoArgsConstructor
@@ -25,6 +26,7 @@ public class NotaMania {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_chart_mania", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonBackReference // <-- La otra mitad para evitar los bucles infinitos
     private ChartMania chartMania;
 
     @Column(name = "tiempo_ms", nullable = false)

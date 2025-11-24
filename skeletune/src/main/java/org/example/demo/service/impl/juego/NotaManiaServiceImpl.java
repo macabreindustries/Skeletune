@@ -20,7 +20,7 @@ public class NotaManiaServiceImpl implements NotaManiaService {
 
     private final NotaManiaRepository notaManiaRepository;
     private final ChartManiaRepository chartManiaRepository;
-    private final MediaRepository mediaRepository;
+    private final MediaRepository mediaRepository; // Inyectar MediaRepository
 
     public NotaManiaServiceImpl(NotaManiaRepository notaManiaRepository,
                                 ChartManiaRepository chartManiaRepository,
@@ -138,7 +138,7 @@ public class NotaManiaServiceImpl implements NotaManiaService {
         notaMania.setCarril(dto.getCarril());
         notaMania.setDuracionMs(dto.getDuracionMs());
         if (dto.getImagenMediaId() != null) {
-            mediaRepository.findById(dto.getImagenMediaId()).ifPresent(notaMania::setImagenMedia);
+            mediaRepository.findById(dto.getImagenMediaId()).ifPresent(notaMania::setImagenMedia); // Usar mediaRepository
         }
         notaMania.setTipo(dto.getTipo());
         return notaMania;
@@ -152,7 +152,7 @@ public class NotaManiaServiceImpl implements NotaManiaService {
         notaMania.setCarril(dto.getCarril());
         notaMania.setDuracionMs(dto.getDuracionMs());
         if (dto.getImagenMediaId() != null) {
-            mediaRepository.findById(dto.getImagenMediaId()).ifPresent(notaMania::setImagenMedia);
+            mediaRepository.findById(dto.getImagenMediaId()).ifPresent(notaMania::setImagenMedia); // Usar mediaRepository
         }
         notaMania.setTipo(dto.getTipo());
     }

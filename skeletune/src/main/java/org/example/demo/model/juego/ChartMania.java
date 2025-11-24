@@ -8,8 +8,11 @@ import org.example.demo.model.Usuario;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import com.fasterxml.jackson.annotation.JsonManagedReference; // IMPORTANTE
 
 import java.time.LocalDateTime;
+import java.util.ArrayList; // Importar ArrayList
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -49,4 +52,24 @@ public class ChartMania {
     @CreationTimestamp
     @Column(name = "fecha_creacion", updatable = false)
     private LocalDateTime fechaCreacion;
+
+    @OneToMany(
+        mappedBy = "chartMania",
+        cascade = CascadeType.ALL, // <-- LA LÍNEA MÁGICA
+        orphanRemoval = true,      // <-- Si borras una nota de la lista, se borra de la BD
+        fetch = FetchType.LAZY // Puedes ajustar a EAGER si siempre necesitas las notas
+    )
+    @JsonManagedReference // <-- Evita bucles infinitos cuando el servidor responde
+    private List<NotaMania> notas = new ArrayList<>(); // Inicializar para evitar NullPointerException
+
+    // Asegúrate de que tienes un método para "setear" las notas que también actualice la relación inversa
+    public void setNotas(List<NotaMania> notas) {
+        this.notas.clear(); // Limpiar la lista existente
+        if (notas != null) {
+            for (NotaMania nota : notas) {
+                nota.setChartMania(this); // <-- Esto asegura la consistencia de la relación
+                this.notas.add(nota);
+            }
+        }
+    }
 }

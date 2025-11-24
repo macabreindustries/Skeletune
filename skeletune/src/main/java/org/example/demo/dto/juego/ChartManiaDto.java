@@ -6,6 +6,7 @@ import org.example.demo.model.juego.ChartMania;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List; // Importar List
 
 @Data
 @NoArgsConstructor
@@ -18,4 +19,5 @@ public class ChartManiaDto implements Serializable {
     private Byte numPistas;
     private Integer createdBy; // Solo el ID para la relación
     private LocalDateTime fechaCreacion;
+    private List<NotaManiaDto> notas; // NUEVO CAMPO: Lista de notas
 }

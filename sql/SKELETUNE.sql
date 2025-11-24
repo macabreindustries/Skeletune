@@ -82,7 +82,7 @@ CREATE TABLE UsuarioInstrumento (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ============================================================
--- 6. CANCIONES (solo administradores pueden subir)
+-- 6. CANCIONES (solo administradores pueden subir) + imagen
 -- ============================================================
 CREATE TABLE Cancion (
     id_cancion INT AUTO_INCREMENT PRIMARY KEY,
@@ -91,6 +91,7 @@ CREATE TABLE Cancion (
     dificultad ENUM('facil','media','dificil') DEFAULT 'media',
     url_audio VARCHAR(512),
     url_partitura VARCHAR(512),
+    imagen_url VARCHAR(512),              -- << NUEVO
     fecha_subida DATETIME DEFAULT CURRENT_TIMESTAMP,
     id_admin INT NOT NULL,
     FOREIGN KEY (id_admin) REFERENCES Usuario(id_usuario)
@@ -461,9 +462,12 @@ INSERT INTO Media (id_usuario, tipo, url_archivo, descripcion) VALUES
 ((SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1), 'foto', '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png', 'Thumbnail demo uploaded by admin');
 
 -- 4) Canciones (ambas canciones serán usadas por los minijuegos)
-INSERT INTO Cancion (titulo, artista, dificultad, url_audio, url_partitura, id_admin) VALUES
-('Midnight Dreams', 'The Weeknd', 'media', '/audio/midnight_dreams.mp3', '/scores/midnight_dreams.pdf', (SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1)),
-('Ocean Waves', 'Frank Ocean', 'facil', '/audio/ocean_waves.mp3', '/scores/ocean_waves.pdf', (SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1));
+INSERT INTO Cancion (titulo, artista, dificultad, url_audio, url_partitura, imagen_url, id_admin) VALUES
+('Midnight Dreams', 'The Weeknd', 'media', '/audio/The Weeknd - Blinding Lights (Official Audio).mp3', '/scores/midnight_dreams.pdf', '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png',
+ (SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1)),
+('Ocean Waves', 'Frank Ocean', 'facil', '/audio/ocean_waves.mp3', '/scores/ocean_waves.pdf', '/mnt/data/50320cfb-8101-4d1a-86f8-97bcaae19aee.png',
+ (SELECT id_usuario FROM Usuario WHERE correo='admin@skeletune.com' LIMIT 1));
+
 
 -- 5) Charts mínimos (uno por canción, 4 pistas fijas)
 INSERT INTO ChartMania (id_cancion, dificultad, speed_multiplier, num_pistas, created_by) VALUES
