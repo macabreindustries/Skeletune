@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Encabezado Fijo -->
+    <TextView
+        android:id="@+id/text_modal_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Agregar Clase Personalizada"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/icon_close_modal"
+        android:layout_marginEnd="16dp" />
+
+    <ImageView
+        android:id="@+id/icon_close_modal"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_close"
+        android:contentDescription="Cerrar"
+        app:tint="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Contenido Scrolleable -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_form_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/text_modal_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="56dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_form_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingBottom="16dp">
+
+            <!-- A. Tarjeta de Información del Alumno -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_student_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_student_person"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_person"
+                        app:tint="@android:color/black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/text_student_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alumno"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/darker_gray"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/icon_student_person"
+                        android:layout_marginStart="12dp" />
+
+                    <TextView
+                        android:id="@+id/text_student_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Juan"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintTop_toBottomOf="@id/text_student_label"
+                        app:layout_constraintStart_toEndOf="@id/icon_student_person"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="4dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- B. Nombre de la Clase -->
+            <TextView
+                android:id="@+id/label_class_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de la Clase"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_book"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/card_student_info"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_class_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Ej: Acordes Básicos"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintTop_toBottomOf="@id/label_class_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_class_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Instructor -->
+            <TextView
+                android:id="@+id/label_instructor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instructor"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/input_class_name"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_instructor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Selecciona un instructor"
+                app:layout_constraintTop_toBottomOf="@id/label_instructor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown_instructor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tipo de Clase -->
+            <TextView
+                android:id="@+id/label_class_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Clase"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_music"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/input_instructor"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_class_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Selecciona el tipo"
+                app:layout_constraintTop_toBottomOf="@id/label_class_type"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown_class_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- C. Fecha y Hora (Divididos 50/50) -->
+            <!-- Fecha -->
+            <TextView
+                android:id="@+id/label_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Fecha"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/input_class_type"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/label_time"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Hora -->
+            <TextView
+                android:id="@+id/label_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Hora"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_hour"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/input_class_type"
+                app:layout_constraintStart_toEndOf="@id/label_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp" />
+
+            <!-- Input Fecha -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="DD/MM/YYYY"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintTop_toBottomOf="@id/label_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/input_time"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Input Hora -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="HH:MM"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintTop_toBottomOf="@id/label_time"
+                app:layout_constraintStart_toEndOf="@id/input_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- D. Duración -->
+            <TextView
+                android:id="@+id/label_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duración (minutos)"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_hour"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/input_date"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_duration"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="45 minutos"
+                app:layout_constraintTop_toBottomOf="@id/label_duration"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdown_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Notas Personalizadas -->
+            <TextView
+                android:id="@+id/label_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notas Personalizadas"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/ic_notes"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/black"
+                app:layout_constraintTop_toBottomOf="@id/input_duration"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_notes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Ej: Enfoque en técnica de dedos, repasar escalas..."
+                app:boxBackgroundMode="outline"
+                app:layout_constraintTop_toBottomOf="@id/label_notes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:gravity="top|start" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

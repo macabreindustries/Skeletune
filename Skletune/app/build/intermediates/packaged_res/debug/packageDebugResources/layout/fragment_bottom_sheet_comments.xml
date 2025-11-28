@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Mango superior -->
+    <View
+        android:id="@+id/sheet_drag_handle"
+        android:layout_width="150dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/drawer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/text_comments_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comentarios"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/sheet_drag_handle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Separador -->
+    <View
+        android:id="@+id/view_header_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#BDBDBD"
+        app:layout_constraintTop_toBottomOf="@id/text_comments_title" />
+
+    <!-- Botón cerrar (GRANDE y debajo del separador) -->
+    <ImageView
+        android:id="@+id/icon_close_sheet"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_close"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:tint="#424242"
+        app:layout_constraintTop_toBottomOf="@id/view_header_separator"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Contador de comentarios (debajo del botón cerrar) -->
+    <TextView
+        android:id="@+id/text_comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 comentarios"
+        android:textSize="14sp"
+        android:textColor="#414141"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/icon_close_sheet"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Lista de comentarios -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_comment_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="16dp"
+        android:clipToPadding="false"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toBottomOf="@id/text_comment_count"
+        app:layout_constraintBottom_toTopOf="@id/layout_comment_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_comment"
+        tools:itemCount="3" />
+
+    <!-- Barra de entrada -->
+    <LinearLayout
+        android:id="@+id/layout_comment_input"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_margin="12dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/edit_comment_input"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/input"
+            android:hint="Escribe un comentario..."
+            android:paddingHorizontal="12dp"
+            android:textSize="14sp"
+            android:maxLines="3" />
+
+        <ImageView
+            android:id="@+id/icon_send_comment"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_send"
+            app:tint="#424242" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
