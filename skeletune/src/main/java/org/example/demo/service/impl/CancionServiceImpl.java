@@ -33,7 +33,7 @@ public class CancionServiceImpl implements CancionService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CancionDto> findAll(String titulo, String artista, Cancion.Dificultad dificultad, String urlAudio, String urlPartitura) {
+    public List<CancionDto> findAll(String titulo, String artista, Cancion.Dificultad dificultad, String urlAudio, String urlPartitura, String imagenUrl) {
         List<Cancion> canciones;
         if (titulo != null) {
             canciones = cancionRepository.findByTituloContainingIgnoreCase(titulo);
@@ -45,7 +45,10 @@ public class CancionServiceImpl implements CancionService {
             canciones = cancionRepository.findByUrlAudio(urlAudio);
         } else if (urlPartitura != null) {
             canciones = cancionRepository.findByUrlPartitura(urlPartitura);
-        } else {
+        } else if (imagenUrl != null) { // Nuevo filtro por imagenUrl
+            canciones = cancionRepository.findByImagenUrl(imagenUrl);
+        }
+        else {
             canciones = cancionRepository.findAll();
         }
         return canciones.stream().map(this::toDto).collect(Collectors.toList());
@@ -87,7 +90,10 @@ public class CancionServiceImpl implements CancionService {
                     Usuario admin = usuarioRepository.findById((Integer) value)
                             .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + value));
                     existingCancion.setAdmin(admin);
-                } else {
+                } else if ("imagenUrl".equals(key)) { // Nuevo campo en patch
+                    existingCancion.setImagenUrl((String) value);
+                }
+                else {
                     Field field = ReflectionUtils.findField(Cancion.class, key);
                     if (field != null) {
                         field.setAccessible(true);
@@ -135,6 +141,12 @@ public class CancionServiceImpl implements CancionService {
     @Transactional(readOnly = true)
     public List<String> findAllUrlPartituras() {
         return cancionRepository.findAllUrlPartituras();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<String> findAllImagenUrls() { // Nuevo método
+        return cancionRepository.findAllImagenUrls();
     }
 
     private CancionDto toDto(Cancion cancion) {

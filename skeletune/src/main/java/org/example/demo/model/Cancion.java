@@ -34,11 +34,14 @@ public class Cancion {
     @Column(name = "dificultad")
     private Dificultad dificultad = Dificultad.media;
 
-    @Column(name = "url_audio", length = 255)
+    @Column(name = "url_audio", length = 512) // Ajustado a 512 según el SQL
     private String urlAudio;
 
-    @Column(name = "url_partitura", length = 255)
+    @Column(name = "url_partitura", length = 512) // Ajustado a 512 según el SQL
     private String urlPartitura;
+
+    @Column(name = "imagen_url", length = 512) // NUEVO CAMPO
+    private String imagenUrl;
 
     @CreationTimestamp
     @Column(name = "fecha_subida", updatable = false)

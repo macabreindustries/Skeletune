@@ -25,8 +25,9 @@ public class CancionController {
             @RequestParam(required = false) String artista,
             @RequestParam(required = false) Cancion.Dificultad dificultad,
             @RequestParam(required = false) String urlAudio,
-            @RequestParam(required = false) String urlPartitura) {
-        return cancionService.findAll(titulo, artista, dificultad, urlAudio, urlPartitura);
+            @RequestParam(required = false) String urlPartitura,
+            @RequestParam(required = false) String imagenUrl) { // Añadido imagenUrl
+        return cancionService.findAll(titulo, artista, dificultad, urlAudio, urlPartitura, imagenUrl);
     }
 
     @GetMapping("/{titulo}")
@@ -81,5 +82,10 @@ public class CancionController {
     @GetMapping("/url-partituras")
     public List<String> getUrlPartituras() {
         return cancionService.findAllUrlPartituras();
+    }
+
+    @GetMapping("/imagen-urls") // Nuevo endpoint
+    public List<String> getImagenUrls() {
+        return cancionService.findAllImagenUrls();
     }
 }

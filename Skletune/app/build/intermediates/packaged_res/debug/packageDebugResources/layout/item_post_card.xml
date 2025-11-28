@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="16dp"
+    android:paddingHorizontal="12dp">
+
+    <!-- Avatar circular -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_user_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Menú de opciones -->
+    <ImageView
+        android:id="@+id/image_post_options"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_more"
+        app:tint="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <!-- Texto principal (Nombre y Grupo) -->
+    <TextView
+        android:id="@+id/text_post_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre en Nombre del grupo"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toTopOf="@id/image_user_avatar"
+        app:layout_constraintStart_toEndOf="@id/image_user_avatar"
+        app:layout_constraintEnd_toStartOf="@id/image_post_options"
+        app:layout_constraintHorizontal_bias="0"
+        tools:text="Juan Jesús en Programación II" />
+
+    <!-- Tiempo de publicación -->
+    <TextView
+        android:id="@+id/text_post_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hace 5 minutos"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/text_post_header"
+        app:layout_constraintStart_toEndOf="@id/image_user_avatar"
+        tools:text="Hace 10 minutos" />
+
+    <!-- Imagen principal de la publicación -->
+    <ImageView
+        android:id="@+id/image_post_content"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/text_post_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic"  />
+
+    <!-- Texto/Descripción del post -->
+    <TextView
+        android:id="@+id/text_post_body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/image_post_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Texto del cuerpo de una publicación, puede incluir varias líneas dependiendo del contenido." />
+
+    <!-- Barra de interacciones -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_post_actions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_post_body"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- LIKE -->
+        <ImageView
+            android:id="@+id/icon_like"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_like"
+            android:padding="4dp"
+            app:tint="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21 me gusta"
+            android:textSize="13sp"
+            android:layout_marginStart="6dp"
+            app:layout_constraintTop_toTopOf="@id/icon_like"
+            app:layout_constraintStart_toEndOf="@id/icon_like" />
+
+        <!-- COMMENTS -->
+        <ImageView
+            android:id="@+id/icon_comment"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_comment"
+            android:layout_marginStart="20dp"
+            android:padding="4dp"
+            app:tint="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/text_like_count"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_comment_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 comentarios"
+            android:textSize="13sp"
+            android:layout_marginStart="6dp"
+            app:layout_constraintTop_toTopOf="@id/icon_comment"
+            app:layout_constraintStart_toEndOf="@id/icon_comment" />
+
+        <!-- SAVE/FAVORITE -->
+        <ImageView
+            android:id="@+id/icon_save"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_save"
+            android:padding="4dp"
+            app:tint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

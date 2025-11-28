@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface CancionService {
 
-    List<CancionDto> findAll(String titulo, String artista, Cancion.Dificultad dificultad, String urlAudio, String urlPartitura);
+    List<CancionDto> findAll(String titulo, String artista, Cancion.Dificultad dificultad, String urlAudio, String urlPartitura, String imagenUrl); // Añadido imagenUrl
 
     CancionDto findByTitulo(String titulo);
 
@@ -29,4 +29,6 @@ public interface CancionService {
     List<String> findAllUrlAudios();
 
     List<String> findAllUrlPartituras();
+
+    List<String> findAllImagenUrls(); // Nuevo método
 }

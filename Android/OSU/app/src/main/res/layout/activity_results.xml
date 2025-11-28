@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:padding="16dp"
+    tools:context=".ResultsActivity">
+
+    <TextView
+        android:id="@+id/gradeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:fontFamily="sans-serif-black"
+        android:text="S"
+        android:textColor="#FFD700" 
+        android:textSize="120sp" />
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gradeTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-light"
+        android:text="0000000"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/accuracyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scoreTextView"
+        android:layout_centerHorizontal="true"
+        android:text="100.00%"
+        android:textColor="#E0E0E0"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/statsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accuracyTextView"
+        android:layout_marginTop="48dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="32dp">
+
+        <!-- Max Combo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                style="@style/ResultLabel"
+                android:text="Combo Máx" />
+            <TextView
+                android:id="@+id/maxComboTextView"
+                style="@style/ResultValue"
+                android:text="0" />
+        </LinearLayout>
+
+        <!-- Perfects -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <TextView
+                style="@style/ResultLabel"
+                android:text="Perfects" 
+                android:textColor="#00BCD4"/>
+            <TextView
+                android:id="@+id/perfectsTextView"
+                style="@style/ResultValue"
+                android:text="0" 
+                android:textColor="#00BCD4"/>
+        </LinearLayout>
+
+        <!-- Greats -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <TextView
+                style="@style/ResultLabel"
+                android:text="Greats"
+                android:textColor="#4CAF50" />
+            <TextView
+                android:id="@+id/greatsTextView"
+                style="@style/ResultValue"
+                android:text="0" 
+                android:textColor="#4CAF50"/>
+        </LinearLayout>
+
+        <!-- Goods -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <TextView
+                style="@style/ResultLabel"
+                android:text="Goods" 
+                android:textColor="#FFC107"/>
+            <TextView
+                android:id="@+id/goodsTextView"
+                style="@style/ResultValue"
+                android:text="0"
+                android:textColor="#FFC107" />
+        </LinearLayout>
+
+        <!-- Misses -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+            <TextView
+                style="@style/ResultLabel"
+                android:text="Misses"
+                android:textColor="#F44336" />
+            <TextView
+                android:id="@+id/missesTextView"
+                style="@style/ResultValue"
+                android:text="0"
+                android:textColor="#F44336" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveAndExitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:paddingHorizontal="48dp"
+        android:paddingVertical="16dp"
+        android:text="Guardar y Salir"
+        android:textSize="18sp" />
+
+</RelativeLayout>
+

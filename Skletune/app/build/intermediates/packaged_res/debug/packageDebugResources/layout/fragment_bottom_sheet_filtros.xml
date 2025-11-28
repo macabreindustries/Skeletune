@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#2D2D2D"
+    android:paddingTop="16dp"
+    android:paddingBottom="24dp">
+
+    <!-- ============================================ -->
+    <!-- HEADER: Título y Botón de Cierre -->
+    <!-- ============================================ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/tv_titulo_filtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filtros"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_cerrar_filtros"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Cerrar filtros"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:tint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ============================================ -->
+    <!-- CONTENEDOR SCROLLABLE DE FILTROS -->
+    <!-- ============================================ -->
+    <HorizontalScrollView
+        android:id="@+id/hsv_contenedor_filtros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- ============================================ -->
+            <!-- FILTRO 1: Original -->
+            <!-- ============================================ -->
+            <LinearLayout
+                android:id="@+id/filtro_original"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/iv_filtro_original"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="#424242"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Filtro Original" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Original"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+            <!-- ============================================ -->
+            <!-- FILTRO 2: Clarendon -->
+            <!-- ============================================ -->
+            <LinearLayout
+                android:id="@+id/filtro_clarendon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/iv_filtro_clarendon"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="#424242"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Filtro Clarendon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clarendon"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+            <!-- ============================================ -->
+            <!-- FILTRO 3: Gingham -->
+            <!-- ============================================ -->
+            <LinearLayout
+                android:id="@+id/filtro_gingham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/iv_filtro_gingham"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="#424242"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Filtro Gingham" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gingham"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+            <!-- ============================================ -->
+            <!-- FILTRO 4: Moon -->
+            <!-- ============================================ -->
+            <LinearLayout
+                android:id="@+id/filtro_moon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/iv_filtro_moon"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="#424242"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Filtro Moon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Moon"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+            <!-- ============================================ -->
+            <!-- FILTRO 5: Lark -->
+            <!-- ============================================ -->
+            <LinearLayout
+                android:id="@+id/filtro_lark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:id="@+id/iv_filtro_lark"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="#424242"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Filtro Lark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lark"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>
