@@ -1,0 +1,10 @@
+{
+    "idCancion": 1,
+    "titulo": "Blinding Lights",
+    "artista": "The Weekend",
+    "dificultad": "facil",
+    "urlAudio": "/audio/The Weeknd - Blinding Lights (Official Audio).mp3",
+    "urlPartitura": null,
+    "imagenUrl": "https://images.genius.com/34c1c35ca27a735e6e5f18611acb1c16.1000x1000x1.png",
+    "idAdmin": 1
+}
