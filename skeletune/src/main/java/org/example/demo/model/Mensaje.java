@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -22,10 +24,12 @@ public class Mensaje {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_emisor", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario emisor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_receptor", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario receptor;
 
     @Column(name = "mensaje", columnDefinition = "TEXT")
@@ -33,12 +37,13 @@ public class Mensaje {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_media")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Media media;
 
     @CreationTimestamp
     @Column(name = "fecha_envio", nullable = false, updatable = false)
     private LocalDateTime fechaEnvio;
 
-    @Column(name = "visto", nullable = false)
+    @Column(name = "visto", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean visto = false;
 }

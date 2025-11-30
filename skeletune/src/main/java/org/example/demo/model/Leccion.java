@@ -1,6 +1,7 @@
 package org.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Leccion")
 public class Leccion {
@@ -32,20 +34,20 @@ public class Leccion {
     private String descripcion;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
+    @Column(name = "tipo", columnDefinition = "ENUM('teoria','practica') DEFAULT 'practica'")
     private Tipo tipo = Tipo.practica;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "nivel", nullable = false)
+    @Column(name = "nivel", columnDefinition = "ENUM('principiante','intermedio','avanzado') DEFAULT 'principiante'")
     private Nivel nivel = Nivel.principiante;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cancion", nullable = true)
+    @JoinColumn(name = "id_cancion")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private Cancion cancion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_video", nullable = true)
+    @JoinColumn(name = "id_video")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private VideoEducativo video;
 }
