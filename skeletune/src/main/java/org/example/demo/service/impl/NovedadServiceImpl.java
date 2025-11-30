@@ -1,5 +1,6 @@
 package org.example.demo.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.example.demo.dto.NovedadDto;
 import org.example.demo.model.Novedad;
@@ -7,10 +8,14 @@ import org.example.demo.model.Usuario;
 import org.example.demo.repository.NovedadRepository;
 import org.example.demo.repository.UsuarioRepository;
 import org.example.demo.service.NovedadService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,76 +23,100 @@ public class NovedadServiceImpl implements NovedadService {
 
     private final NovedadRepository novedadRepository;
     private final UsuarioRepository usuarioRepository;
+    private final ObjectMapper objectMapper;
 
-    @Autowired
-    public NovedadServiceImpl(NovedadRepository novedadRepository, UsuarioRepository usuarioRepository) {
+    public NovedadServiceImpl(NovedadRepository novedadRepository, UsuarioRepository usuarioRepository, ObjectMapper objectMapper) {
         this.novedadRepository = novedadRepository;
         this.usuarioRepository = usuarioRepository;
+        this.objectMapper = objectMapper;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<NovedadDto> findAll() {
-        return novedadRepository.findAll().stream()
-                .map(NovedadDto::new)
-                .collect(Collectors.toList());
+        return novedadRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public NovedadDto findById(Integer id) {
-        return novedadRepository.findById(id)
-                .map(NovedadDto::new)
-                .orElseThrow(() -> new EntityNotFoundException("Novedad no encontrada con id: " + id));
+        return novedadRepository.findById(id).map(this::toDto).orElse(null);
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<NovedadDto> findByAdminId(Integer idAdmin) {
+        return novedadRepository.findByAdminId(idAdmin).stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
     public NovedadDto save(NovedadDto novedadDto) {
-        Usuario admin = usuarioRepository.findById(novedadDto.getIdAdmin())
-                .orElseThrow(() -> new EntityNotFoundException("Usuario (Admin) no encontrado con id: " + novedadDto.getIdAdmin()));
-
-        Novedad novedad = new Novedad();
-        novedad.setAdmin(admin);
-        novedad.setTitulo(novedadDto.getTitulo());
-        novedad.setContenido(novedadDto.getContenido());
-        novedad.setImagenUrl(novedadDto.getImagenUrl());
-        novedad.setImportancia(novedadDto.getImportancia());
-
-        Novedad savedNovedad = novedadRepository.save(novedad);
-        return new NovedadDto(savedNovedad);
+        Novedad novedad = toEntity(novedadDto);
+        return toDto(novedadRepository.save(novedad));
     }
 
     @Override
+    @Transactional
     public NovedadDto update(Integer id, NovedadDto novedadDto) {
-        Novedad existingNovedad = novedadRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Novedad no encontrada con id: " + id));
-
-        // Opcional: Validar que el admin que actualiza sea el mismo o tenga permisos
-        if (novedadDto.getIdAdmin() != null && !existingNovedad.getAdmin().getId().equals(novedadDto.getIdAdmin())) {
-            Usuario newAdmin = usuarioRepository.findById(novedadDto.getIdAdmin())
-                    .orElseThrow(() -> new EntityNotFoundException("Usuario (Admin) no encontrado con id: " + novedadDto.getIdAdmin()));
-            existingNovedad.setAdmin(newAdmin);
-        }
-
-        existingNovedad.setTitulo(novedadDto.getTitulo());
-        existingNovedad.setContenido(novedadDto.getContenido());
-        existingNovedad.setImagenUrl(novedadDto.getImagenUrl());
-        existingNovedad.setImportancia(novedadDto.getImportancia());
-
-        Novedad updatedNovedad = novedadRepository.save(existingNovedad);
-        return new NovedadDto(updatedNovedad);
+        return novedadRepository.findById(id).map(existingNovedad -> {
+            BeanUtils.copyProperties(novedadDto, existingNovedad, "idNovedad", "fechaPublicacion", "admin");
+            if (novedadDto.getIdAdmin() != null) {
+                Usuario admin = usuarioRepository.findById(novedadDto.getIdAdmin())
+                        .orElseThrow(() -> new EntityNotFoundException("Usuario administrador no encontrado con id: " + novedadDto.getIdAdmin()));
+                existingNovedad.setAdmin(admin);
+            }
+            return toDto(novedadRepository.save(existingNovedad));
+        }).orElse(null);
     }
 
     @Override
+    @Transactional
+    public NovedadDto patch(Integer id, Map<String, Object> updates) {
+        return novedadRepository.findById(id).map(existingNovedad -> {
+            updates.forEach((key, value) -> {
+                if ("idAdmin".equals(key)) {
+                    Usuario admin = usuarioRepository.findById((Integer) value)
+                            .orElseThrow(() -> new EntityNotFoundException("Usuario administrador no encontrado con id: " + value));
+                    existingNovedad.setAdmin(admin);
+                } else {
+                    Field field = ReflectionUtils.findField(Novedad.class, key);
+                    if (field != null) {
+                        field.setAccessible(true);
+                        Object convertedValue = objectMapper.convertValue(value, field.getType());
+                        ReflectionUtils.setField(field, existingNovedad, convertedValue);
+                    }
+                }
+            });
+            return toDto(novedadRepository.save(existingNovedad));
+        }).orElse(null);
+    }
+
+    @Override
+    @Transactional
     public void deleteById(Integer id) {
-        if (!novedadRepository.existsById(id)) {
-            throw new EntityNotFoundException("Novedad no encontrada con id: " + id);
-        }
         novedadRepository.deleteById(id);
     }
 
-    @Override
-    public List<NovedadDto> getRecentNovedades() {
-        return novedadRepository.findTop5ByOrderByFechaPublicacionDesc().stream()
-                .map(NovedadDto::new)
-                .collect(Collectors.toList());
+    private NovedadDto toDto(Novedad novedad) {
+        NovedadDto dto = new NovedadDto();
+        BeanUtils.copyProperties(novedad, dto, "admin");
+        if (novedad.getAdmin() != null) {
+            dto.setIdAdmin(novedad.getAdmin().getId());
+        }
+        return dto;
+    }
+
+    private Novedad toEntity(NovedadDto dto) {
+        Novedad novedad = new Novedad();
+        BeanUtils.copyProperties(dto, novedad, "idAdmin");
+        if (dto.getIdAdmin() != null) {
+            Usuario admin = usuarioRepository.findById(dto.getIdAdmin())
+                    .orElseThrow(() -> new EntityNotFoundException("Usuario administrador no encontrado con id: " + dto.getIdAdmin()));
+            novedad.setAdmin(admin);
+        } else {
+            throw new IllegalArgumentException("El campo idAdmin no puede ser nulo.");
+        }
+        return novedad;
     }
 }

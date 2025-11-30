@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -16,9 +18,7 @@ import java.time.LocalDateTime;
 public class Novedad {
 
     public enum Importancia {
-        alta,
-        media,
-        baja
+        alta, media, baja
     }
 
     @Id
@@ -28,6 +28,7 @@ public class Novedad {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_admin", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario admin;
 
     @Column(name = "titulo", nullable = false, length = 150)
@@ -36,14 +37,14 @@ public class Novedad {
     @Column(name = "contenido", nullable = false, columnDefinition = "TEXT")
     private String contenido;
 
-    @Column(name = "imagen_url", length = 255)
+    @Column(name = "imagen_url", length = 512)
     private String imagenUrl;
 
     @CreationTimestamp
-    @Column(name = "fecha_publicacion", nullable = false, updatable = false)
+    @Column(name = "fecha_publicacion", updatable = false)
     private LocalDateTime fechaPublicacion;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "importancia", nullable = false, columnDefinition = "ENUM('alta','media','baja') DEFAULT 'media'")
-    private Importancia importancia;
+    @Column(name = "importancia", columnDefinition = "ENUM('alta','media','baja') DEFAULT 'media'")
+    private Importancia importancia = Importancia.media;
 }

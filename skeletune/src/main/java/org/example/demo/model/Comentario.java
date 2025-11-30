@@ -14,36 +14,28 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Media")
-public class Media {
-
-    public enum Tipo {
-        foto,
-        video,
-        audio
-    }
+@Table(name = "Comentario")
+public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_media")
-    private Integer idMedia;
+    @Column(name = "id_comentario")
+    private Integer idComentario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_publicacion", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Publicacion publicacion;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
-    private Tipo tipo;
-
-    @Column(name = "url_archivo", nullable = false, length = 512)
-    private String urlArchivo;
+    @Column(name = "comentario", nullable = false, columnDefinition = "TEXT")
+    private String comentario;
 
     @CreationTimestamp
-    @Column(name = "fecha_subida", nullable = false, updatable = false)
-    private LocalDateTime fechaSubida;
-
-    @Column(name = "descripcion", columnDefinition = "TEXT")
-    private String descripcion;
+    @Column(name = "fecha_comentario", updatable = false)
+    private LocalDateTime fechaComentario;
 }
