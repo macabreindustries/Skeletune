@@ -1,6 +1,8 @@
 package org.example.demo.service.impl;
 
 import org.example.demo.dto.RolDto;
+import org.example.demo.dto.UsuarioDto;
+import org.example.demo.model.Rol;
 import org.example.demo.model.Usuario;
 import org.example.demo.repository.RolRepository;
 import org.example.demo.repository.UsuarioRepository;
@@ -24,32 +26,53 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<Usuario> getAll() {
-        return usuarioRepository.findAll();
+    public List<UsuarioDto> getAll() {
+        return usuarioRepository.findAll()
+                .stream()
+                .map(UsuarioDto::fromEntity)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Usuario getById(Integer id) {
-        return usuarioRepository.findById(id).orElseThrow(() ->
-                new RuntimeException("Usuario no encontrado con id: " + id));
+    public UsuarioDto getById(Integer id) {
+        return usuarioRepository.findById(id)
+                .map(UsuarioDto::fromEntity)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
     }
 
     @Override
-    public Usuario save(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public UsuarioDto save(UsuarioDto usuarioDto) {
+        Rol rol = rolRepository.findById(usuarioDto.getIdRol())
+                .orElseThrow(() -> new RuntimeException("Rol no encontrado con id: " + usuarioDto.getIdRol()));
+
+        Usuario usuario = usuarioDto.toEntity(rol);
+
+        // --- ¡Punto Crítico de Seguridad! ---
+        // Aquí es donde deberías encriptar la contraseña antes de guardarla.
+        // Ejemplo: usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
+
+        Usuario savedUsuario = usuarioRepository.save(usuario);
+        return UsuarioDto.fromEntity(savedUsuario);
     }
 
     @Override
-    public Usuario update(Integer id, Usuario newData) {
-        Usuario usuario = getById(id); // Reutilizamos el método para obtener y lanzar excepción
+    public UsuarioDto update(Integer id, UsuarioDto usuarioDto) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id: " + id));
 
-        usuario.setNombre(newData.getNombre());
-        usuario.setCorreo(newData.getCorreo());
-        usuario.setContrasena(newData.getContrasena());
-        usuario.setFechaRegistro(newData.getFechaRegistro());
-        usuario.setRol(newData.getRol());
+        usuario.setNombre(usuarioDto.getNombre());
+        usuario.setCorreo(usuarioDto.getCorreo());
+        // No actualizamos la contraseña aquí a menos que se maneje explícitamente
+        // (ej. un campo "nuevaContrasena" en el DTO).
 
-        return usuarioRepository.save(usuario);
+        if (usuarioDto.getIdRol() != null && !usuarioDto.getIdRol().equals(usuario.getRol().getId())) {
+            Rol nuevoRol = rolRepository.findById(usuarioDto.getIdRol())
+                    .orElseThrow(() -> new RuntimeException("Rol no encontrado con id: " + usuarioDto.getIdRol()));
+            usuario.setRol(nuevoRol);
+        }
+
+        Usuario updatedUsuario = usuarioRepository.save(usuario);
+        return UsuarioDto.fromEntity(updatedUsuario);
     }
 
     @Override

@@ -8,13 +8,13 @@ import org.example.demo.model.Usuario;
 import java.util.List;
 
 public interface UsuarioService {
-    List<Usuario> getAll();
+    List<UsuarioDto> getAll();
 
-    Usuario getById(Integer id);
+    UsuarioDto getById(Integer id);
 
-    Usuario save(Usuario usuario);
+    UsuarioDto save(UsuarioDto usuarioDto);
 
-    Usuario update(Integer id, Usuario usuario);
+    UsuarioDto update(Integer id, UsuarioDto usuarioDto);
 
     void delete(Integer id);
 

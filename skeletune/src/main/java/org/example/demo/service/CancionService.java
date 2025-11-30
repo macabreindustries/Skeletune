@@ -10,15 +10,15 @@ public interface CancionService {
 
     List<CancionDto> findAll(String titulo, String artista, Cancion.Dificultad dificultad, String urlAudio, String urlPartitura, String imagenUrl); // Añadido imagenUrl
 
-    CancionDto findByTitulo(String titulo);
+    CancionDto findById(Integer id);
 
     CancionDto save(CancionDto cancionDto);
 
-    CancionDto update(String titulo, CancionDto cancionDto);
+    CancionDto update(Integer id, CancionDto cancionDto);
 
-    CancionDto patch(String titulo, Map<String, Object> updates);
+    CancionDto patch(Integer id, Map<String, Object> updates);
 
-    void deleteByTitulo(String titulo);
+    void deleteById(Integer id);
 
     List<String> findAllTitulos();
 
