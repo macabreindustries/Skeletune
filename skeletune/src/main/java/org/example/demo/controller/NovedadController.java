@@ -2,12 +2,11 @@ package org.example.demo.controller;
 
 import org.example.demo.dto.NovedadDto;
 import org.example.demo.service.NovedadService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/skeletune/api/novedades")
@@ -15,40 +14,46 @@ public class NovedadController {
 
     private final NovedadService novedadService;
 
-    @Autowired
     public NovedadController(NovedadService novedadService) {
         this.novedadService = novedadService;
     }
 
     @GetMapping
-    public ResponseEntity<List<NovedadDto>> getAllNovedades() {
-        return ResponseEntity.ok(novedadService.findAll());
+    public List<NovedadDto> getAllNovedades() {
+        return novedadService.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<NovedadDto> getNovedadById(@PathVariable Integer id) {
-        return ResponseEntity.ok(novedadService.findById(id));
+        NovedadDto novedadDto = novedadService.findById(id);
+        return novedadDto != null ? ResponseEntity.ok(novedadDto) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/admin/{idAdmin}")
+    public List<NovedadDto> getNovedadesByAdminId(@PathVariable Integer idAdmin) {
+        return novedadService.findByAdminId(idAdmin);
     }
 
     @PostMapping
-    public ResponseEntity<NovedadDto> createNovedad(@RequestBody NovedadDto novedadDto) {
-        NovedadDto createdNovedad = novedadService.save(novedadDto);
-        return new ResponseEntity<>(createdNovedad, HttpStatus.CREATED);
+    public NovedadDto createNovedad(@RequestBody NovedadDto novedadDto) {
+        return novedadService.save(novedadDto);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<NovedadDto> updateNovedad(@PathVariable Integer id, @RequestBody NovedadDto novedadDto) {
-        return ResponseEntity.ok(novedadService.update(id, novedadDto));
+        NovedadDto updatedNovedad = novedadService.update(id, novedadDto);
+        return updatedNovedad != null ? ResponseEntity.ok(updatedNovedad) : ResponseEntity.notFound().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<NovedadDto> patchNovedad(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
+        NovedadDto patchedNovedad = novedadService.patch(id, updates);
+        return patchedNovedad != null ? ResponseEntity.ok(patchedNovedad) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteNovedad(@PathVariable Integer id) {
         novedadService.deleteById(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/recientes")
-    public ResponseEntity<List<NovedadDto>> getRecentNovedades() {
-        return ResponseEntity.ok(novedadService.getRecentNovedades());
     }
 }

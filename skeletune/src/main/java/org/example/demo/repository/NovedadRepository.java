@@ -1,5 +1,3 @@
-// ruta: src/main/java/org/example/demo/repository/NovedadRepository.java
-
 package org.example.demo.repository;
 
 import org.example.demo.model.Novedad;
@@ -10,7 +8,5 @@ import java.util.List;
 
 @Repository
 public interface NovedadRepository extends JpaRepository<Novedad, Integer> {
-
-    // Ideal para el carrusel
-    List<Novedad> findTop5ByOrderByFechaPublicacionDesc();
+    List<Novedad> findByAdminId(Integer idAdmin);
 }

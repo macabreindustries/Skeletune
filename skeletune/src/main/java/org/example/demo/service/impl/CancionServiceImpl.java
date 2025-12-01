@@ -56,8 +56,9 @@ public class CancionServiceImpl implements CancionService {
 
     @Override
     @Transactional(readOnly = true)
-    public CancionDto findByTitulo(String titulo) {
-        return cancionRepository.findByTitulo(titulo).map(this::toDto).orElse(null);
+    public CancionDto findById(Integer id) {
+        return cancionRepository.findById(id).map(this::toDto)
+                .orElseThrow(() -> new EntityNotFoundException("Canción no encontrada con id: " + id));
     }
 
     @Override
@@ -69,8 +70,8 @@ public class CancionServiceImpl implements CancionService {
 
     @Override
     @Transactional
-    public CancionDto update(String titulo, CancionDto cancionDto) {
-        return cancionRepository.findByTitulo(titulo).map(existingCancion -> {
+    public CancionDto update(Integer id, CancionDto cancionDto) {
+        return cancionRepository.findById(id).map(existingCancion -> {
             BeanUtils.copyProperties(cancionDto, existingCancion, "idCancion", "fechaSubida", "admin");
             if (cancionDto.getIdAdmin() != null) {
                 Usuario admin = usuarioRepository.findById(cancionDto.getIdAdmin())
@@ -78,13 +79,13 @@ public class CancionServiceImpl implements CancionService {
                 existingCancion.setAdmin(admin);
             }
             return toDto(cancionRepository.save(existingCancion));
-        }).orElse(null);
+        }).orElseThrow(() -> new EntityNotFoundException("Canción no encontrada con id: " + id));
     }
 
     @Override
     @Transactional
-    public CancionDto patch(String titulo, Map<String, Object> updates) {
-        return cancionRepository.findByTitulo(titulo).map(existingCancion -> {
+    public CancionDto patch(Integer id, Map<String, Object> updates) {
+        return cancionRepository.findById(id).map(existingCancion -> {
             updates.forEach((key, value) -> {
                 if ("idAdmin".equals(key)) {
                     Usuario admin = usuarioRepository.findById((Integer) value)
@@ -104,13 +105,16 @@ public class CancionServiceImpl implements CancionService {
                 }
             });
             return toDto(cancionRepository.save(existingCancion));
-        }).orElse(null);
+        }).orElseThrow(() -> new EntityNotFoundException("Canción no encontrada con id: " + id));
     }
 
     @Override
     @Transactional
-    public void deleteByTitulo(String titulo) {
-        cancionRepository.deleteByTitulo(titulo);
+    public void deleteById(Integer id) {
+        if (!cancionRepository.existsById(id)) {
+            throw new EntityNotFoundException("No se puede eliminar la canción con id: " + id + " porque no existe.");
+        }
+        cancionRepository.deleteById(id);
     }
 
     @Override

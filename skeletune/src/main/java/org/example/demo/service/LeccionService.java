@@ -1,19 +1,21 @@
 package org.example.demo.service;
 
 import org.example.demo.dto.LeccionDto;
-import org.example.demo.model.Leccion;
+import org.example.demo.model.Leccion; // Importar la clase Leccion
 
 import java.util.List;
 import java.util.Map;
 
 public interface LeccionService {
-    List<LeccionDto> findAll(String titulo, Leccion.Tipo tipo, Leccion.Nivel nivel, Integer idCancion, Integer idVideo);
-    LeccionDto findById(Integer idLeccion);
+    List<LeccionDto> findAll();
+    LeccionDto findById(Integer id);
+    LeccionDto findByTitulo(String titulo);
+    List<LeccionDto> findByTipo(Leccion.Tipo tipo);
+    List<LeccionDto> findByNivel(Leccion.Nivel nivel);
+    List<LeccionDto> findByCancionId(Integer idCancion);
+    List<LeccionDto> findByVideoId(Integer idVideo);
     LeccionDto save(LeccionDto leccionDto);
-    LeccionDto update(Integer idLeccion, LeccionDto leccionDto);
-    LeccionDto patch(Integer idLeccion, Map<String, Object> updates);
-    void deleteById(Integer idLeccion);
-    List<String> findAllTitulos();
-    List<Leccion.Tipo> findAllTipos();
-    List<Leccion.Nivel> findAllNiveles();
+    LeccionDto update(Integer id, LeccionDto leccionDto);
+    LeccionDto patch(Integer id, Map<String, Object> updates);
+    void deleteById(Integer id);
 }

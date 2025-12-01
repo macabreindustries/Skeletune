@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -28,13 +30,14 @@ public class Media {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false, columnDefinition = "ENUM('foto','video','audio')")
+    @Column(name = "tipo", nullable = false)
     private Tipo tipo;
 
-    @Column(name = "url_archivo", nullable = false, length = 255)
+    @Column(name = "url_archivo", nullable = false, length = 512)
     private String urlArchivo;
 
     @CreationTimestamp

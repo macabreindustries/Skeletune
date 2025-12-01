@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NovedadDto {
-
     private Integer idNovedad;
     private Integer idAdmin;
     private String titulo;
@@ -19,14 +18,4 @@ public class NovedadDto {
     private String imagenUrl;
     private LocalDateTime fechaPublicacion;
     private Novedad.Importancia importancia;
-
-    public NovedadDto(Novedad novedad) {
-        this.idNovedad = novedad.getIdNovedad();
-        this.idAdmin = novedad.getAdmin().getId();
-        this.titulo = novedad.getTitulo();
-        this.contenido = novedad.getContenido();
-        this.imagenUrl = novedad.getImagenUrl();
-        this.fechaPublicacion = novedad.getFechaPublicacion();
-        this.importancia = novedad.getImportancia();
-    }
 }

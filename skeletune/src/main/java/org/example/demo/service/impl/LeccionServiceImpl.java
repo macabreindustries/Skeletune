@@ -1,5 +1,7 @@
 package org.example.demo.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityNotFoundException;
 import org.example.demo.dto.LeccionDto;
 import org.example.demo.model.Cancion;
 import org.example.demo.model.Leccion;
@@ -8,11 +10,14 @@ import org.example.demo.repository.CancionRepository;
 import org.example.demo.repository.LeccionRepository;
 import org.example.demo.repository.VideoEducativoRepository;
 import org.example.demo.service.LeccionService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,118 +26,130 @@ public class LeccionServiceImpl implements LeccionService {
     private final LeccionRepository leccionRepository;
     private final CancionRepository cancionRepository;
     private final VideoEducativoRepository videoEducativoRepository;
+    private final ObjectMapper objectMapper;
 
-    public LeccionServiceImpl(LeccionRepository leccionRepository,
-                              CancionRepository cancionRepository,
-                              VideoEducativoRepository videoEducativoRepository) {
+    public LeccionServiceImpl(LeccionRepository leccionRepository, CancionRepository cancionRepository, VideoEducativoRepository videoEducativoRepository, ObjectMapper objectMapper) {
         this.leccionRepository = leccionRepository;
         this.cancionRepository = cancionRepository;
         this.videoEducativoRepository = videoEducativoRepository;
+        this.objectMapper = objectMapper;
     }
 
     @Override
-    public List<LeccionDto> findAll(String titulo, Leccion.Tipo tipo, Leccion.Nivel nivel, Integer idCancion, Integer idVideo) {
-        List<Leccion> lecciones = leccionRepository.findAll();
-
-        return lecciones.stream()
-                .filter(l -> titulo == null || (l.getTitulo() != null && l.getTitulo().toLowerCase().contains(titulo.toLowerCase())))
-                .filter(l -> tipo == null || l.getTipo().equals(tipo))
-                .filter(l -> nivel == null || l.getNivel().equals(nivel))
-                .filter(l -> idCancion == null || (l.getCancion() != null && l.getCancion().getIdCancion().equals(idCancion)))
-                .filter(l -> idVideo == null || (l.getVideo() != null && l.getVideo().getIdVideo().equals(idVideo)))
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+    @Transactional(readOnly = true)
+    public List<LeccionDto> findAll() {
+        return leccionRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());
     }
 
     @Override
-    public LeccionDto findById(Integer idLeccion) {
-        return leccionRepository.findById(idLeccion)
-                .map(this::convertToDto)
-                .orElse(null);
+    @Transactional(readOnly = true)
+    public LeccionDto findById(Integer id) {
+        return leccionRepository.findById(id).map(this::toDto).orElse(null);
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public LeccionDto findByTitulo(String titulo) {
+        return leccionRepository.findByTitulo(titulo).map(this::toDto).orElse(null);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LeccionDto> findByTipo(Leccion.Tipo tipo) {
+        return leccionRepository.findByTipo(tipo).stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LeccionDto> findByNivel(Leccion.Nivel nivel) {
+        return leccionRepository.findByNivel(nivel).stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LeccionDto> findByCancionId(Integer idCancion) {
+        return leccionRepository.findByCancionIdCancion(idCancion).stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LeccionDto> findByVideoId(Integer idVideo) {
+        return leccionRepository.findByVideoIdVideo(idVideo).stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
     public LeccionDto save(LeccionDto leccionDto) {
-        Leccion leccion = convertToEntity(leccionDto);
-        leccion = leccionRepository.save(leccion);
-        return convertToDto(leccion);
+        Leccion leccion = toEntity(leccionDto);
+        return toDto(leccionRepository.save(leccion));
     }
 
     @Override
-    public LeccionDto update(Integer idLeccion, LeccionDto leccionDto) {
-        Optional<Leccion> existingLeccion = leccionRepository.findById(idLeccion);
-        if (existingLeccion.isPresent()) {
-            Leccion leccion = existingLeccion.get();
-            updateEntityFromDto(leccion, leccionDto);
-            leccion = leccionRepository.save(leccion);
-            return convertToDto(leccion);
-        }
-        return null;
+    @Transactional
+    public LeccionDto update(Integer id, LeccionDto leccionDto) {
+        return leccionRepository.findById(id).map(existingLeccion -> {
+            BeanUtils.copyProperties(leccionDto, existingLeccion, "idLeccion", "cancion", "video");
+            if (leccionDto.getIdCancion() != null) {
+                Cancion cancion = cancionRepository.findById(leccionDto.getIdCancion())
+                        .orElseThrow(() -> new EntityNotFoundException("Canción no encontrada con id: " + leccionDto.getIdCancion()));
+                existingLeccion.setCancion(cancion);
+            } else {
+                existingLeccion.setCancion(null);
+            }
+            if (leccionDto.getIdVideo() != null) {
+                VideoEducativo video = videoEducativoRepository.findById(leccionDto.getIdVideo())
+                        .orElseThrow(() -> new EntityNotFoundException("Video educativo no encontrado con id: " + leccionDto.getIdVideo()));
+                existingLeccion.setVideo(video);
+            } else {
+                existingLeccion.setVideo(null);
+            }
+            return toDto(leccionRepository.save(existingLeccion));
+        }).orElse(null);
     }
 
     @Override
-    public LeccionDto patch(Integer idLeccion, Map<String, Object> updates) {
-        Optional<Leccion> existingLeccion = leccionRepository.findById(idLeccion);
-        if (existingLeccion.isPresent()) {
-            Leccion leccionToUpdate = existingLeccion.get();
-
-            if (updates.containsKey("titulo")) {
-                leccionToUpdate.setTitulo((String) updates.get("titulo"));
-            }
-            if (updates.containsKey("descripcion")) {
-                leccionToUpdate.setDescripcion((String) updates.get("descripcion"));
-            }
-            if (updates.containsKey("tipo")) {
-                leccionToUpdate.setTipo(Leccion.Tipo.valueOf((String) updates.get("tipo")));
-            }
-            if (updates.containsKey("nivel")) {
-                leccionToUpdate.setNivel(Leccion.Nivel.valueOf((String) updates.get("nivel")));
-            }
-            if (updates.containsKey("idCancion")) {
-                cancionRepository.findById(((Number) updates.get("idCancion")).intValue())
-                        .ifPresent(leccionToUpdate::setCancion);
-            }
-            if (updates.containsKey("idVideo")) {
-                videoEducativoRepository.findById(((Number) updates.get("idVideo")).intValue())
-                        .ifPresent(leccionToUpdate::setVideo);
-            }
-
-            Leccion updatedLeccion = leccionRepository.save(leccionToUpdate);
-            return convertToDto(updatedLeccion);
-        }
-        return null;
+    @Transactional
+    public LeccionDto patch(Integer id, Map<String, Object> updates) {
+        return leccionRepository.findById(id).map(existingLeccion -> {
+            updates.forEach((key, value) -> {
+                if ("idCancion".equals(key)) {
+                    if (value == null) {
+                        existingLeccion.setCancion(null);
+                    } else {
+                        Cancion cancion = cancionRepository.findById((Integer) value)
+                                .orElseThrow(() -> new EntityNotFoundException("Canción no encontrada con id: " + value));
+                        existingLeccion.setCancion(cancion);
+                    }
+                } else if ("idVideo".equals(key)) {
+                    if (value == null) {
+                        existingLeccion.setVideo(null);
+                    } else {
+                        VideoEducativo video = videoEducativoRepository.findById((Integer) value)
+                                .orElseThrow(() -> new EntityNotFoundException("Video educativo no encontrado con id: " + value));
+                        existingLeccion.setVideo(video);
+                    }
+                } else {
+                    Field field = ReflectionUtils.findField(Leccion.class, key);
+                    if (field != null) {
+                        field.setAccessible(true);
+                        Object convertedValue = objectMapper.convertValue(value, field.getType());
+                        ReflectionUtils.setField(field, existingLeccion, convertedValue);
+                    }
+                }
+            });
+            return toDto(leccionRepository.save(existingLeccion));
+        }).orElse(null);
     }
 
     @Override
-    public void deleteById(Integer idLeccion) {
-        leccionRepository.deleteById(idLeccion);
+    @Transactional
+    public void deleteById(Integer id) {
+        leccionRepository.deleteById(id);
     }
 
-    @Override
-    public List<String> findAllTitulos() {
-        return leccionRepository.findAll().stream()
-                .map(Leccion::getTitulo)
-                .distinct()
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Leccion.Tipo> findAllTipos() {
-        return List.of(Leccion.Tipo.values());
-    }
-
-    @Override
-    public List<Leccion.Nivel> findAllNiveles() {
-        return List.of(Leccion.Nivel.values());
-    }
-
-    private LeccionDto convertToDto(Leccion leccion) {
+    private LeccionDto toDto(Leccion leccion) {
         LeccionDto dto = new LeccionDto();
-        dto.setIdLeccion(leccion.getIdLeccion());
-        dto.setTitulo(leccion.getTitulo());
-        dto.setDescripcion(leccion.getDescripcion());
-        dto.setTipo(leccion.getTipo());
-        dto.setNivel(leccion.getNivel());
+        BeanUtils.copyProperties(leccion, dto, "cancion", "video");
         if (leccion.getCancion() != null) {
             dto.setIdCancion(leccion.getCancion().getIdCancion());
         }
@@ -142,32 +159,19 @@ public class LeccionServiceImpl implements LeccionService {
         return dto;
     }
 
-    private Leccion convertToEntity(LeccionDto dto) {
+    private Leccion toEntity(LeccionDto dto) {
         Leccion leccion = new Leccion();
-        leccion.setIdLeccion(dto.getIdLeccion());
-        leccion.setTitulo(dto.getTitulo());
-        leccion.setDescripcion(dto.getDescripcion());
-        leccion.setTipo(dto.getTipo());
-        leccion.setNivel(dto.getNivel());
+        BeanUtils.copyProperties(dto, leccion, "idCancion", "idVideo");
         if (dto.getIdCancion() != null) {
-            cancionRepository.findById(dto.getIdCancion()).ifPresent(leccion::setCancion);
+            Cancion cancion = cancionRepository.findById(dto.getIdCancion())
+                    .orElseThrow(() -> new EntityNotFoundException("Canción no encontrada con id: " + dto.getIdCancion()));
+            leccion.setCancion(cancion);
         }
         if (dto.getIdVideo() != null) {
-            videoEducativoRepository.findById(dto.getIdVideo()).ifPresent(leccion::setVideo);
+            VideoEducativo video = videoEducativoRepository.findById(dto.getIdVideo())
+                    .orElseThrow(() -> new EntityNotFoundException("Video educativo no encontrado con id: " + dto.getIdVideo()));
+            leccion.setVideo(video);
         }
         return leccion;
-    }
-
-    private void updateEntityFromDto(Leccion leccion, LeccionDto dto) {
-        leccion.setTitulo(dto.getTitulo());
-        leccion.setDescripcion(dto.getDescripcion());
-        leccion.setTipo(dto.getTipo());
-        leccion.setNivel(dto.getNivel());
-        if (dto.getIdCancion() != null) {
-            cancionRepository.findById(dto.getIdCancion()).ifPresent(leccion::setCancion);
-        }
-        if (dto.getIdVideo() != null) {
-            videoEducativoRepository.findById(dto.getIdVideo()).ifPresent(leccion::setVideo);
-        }
     }
 }

@@ -7,11 +7,13 @@ import org.example.demo.model.Rol;
 import org.example.demo.model.Usuario;
 import org.example.demo.service.RolService;
 import org.example.demo.service.UsuarioService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Contract;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.ArrayList;
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,53 +27,38 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<List<UsuarioDto>> list() {
-        List<UsuarioDto> response = usuarioService.getAll()
-                .stream().map(UsuarioDto::fromEntity)
-                .collect(Collectors.toList());
+        // El servicio ahora devuelve directamente la lista de DTOs
+        List<UsuarioDto> response = usuarioService.getAll();
 
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDto> getById(@PathVariable Integer id) {
-        Usuario usuario = usuarioService.getById(id);
-        return ResponseEntity.ok(UsuarioDto.fromEntity(usuario));
+        // El servicio ahora devuelve directamente el DTO
+        UsuarioDto usuarioDto = usuarioService.getById(id);
+        return ResponseEntity.ok(usuarioDto);
     }
 
     @PostMapping
     public ResponseEntity<UsuarioDto> create(@RequestBody UsuarioDto dto) {
-
-        Rol rol = rolService.getById(dto.getIdRol());
-
-        Usuario usuario = Usuario.builder()
-                .nombre(dto.getNombre())
-                .correo(dto.getCorreo())
-                .contrasena(dto.getContrasena()) // SIN ENCRIPTAR
-                .fechaRegistro(dto.getFechaRegistro())
-                .rol(rol)
-                .build();
-
-        Usuario saved = usuarioService.save(usuario);
-
-        return ResponseEntity.ok(UsuarioDto.fromEntity(saved));
+        // La lógica de creación debe estar en el servicio.
+        // El servicio debería encargarse de buscar el rol y encriptar la contraseña.
+        UsuarioDto savedDto = usuarioService.save(dto); // Asumiendo que el servicio ahora acepta un DTO
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedDto.getIdUsuario()) // Usar el getter correcto del DTO
+                .toUri();
+        return ResponseEntity.created(location).body(savedDto);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioDto> update(
             @PathVariable Integer id,
             @RequestBody UsuarioDto dto) {
-
-        Rol rol = rolService.getById(dto.getIdRol());
-
-        Usuario updated = usuarioService.update(id, Usuario.builder()
-                .nombre(dto.getNombre())
-                .correo(dto.getCorreo())
-                .contrasena(dto.getContrasena())
-                .fechaRegistro(dto.getFechaRegistro())
-                .rol(rol)
-                .build());
-
-        return ResponseEntity.ok(UsuarioDto.fromEntity(updated));
+        // La lógica de actualización también debería estar en el servicio
+        UsuarioDto updatedDto = usuarioService.update(id, dto); // Asumiendo que el servicio ahora acepta un DTO
+        return ResponseEntity.ok(updatedDto);
     }
 
     @DeleteMapping("/{id}")
@@ -83,17 +70,17 @@ public class UsuarioController {
     // --- Endpoints para filtros ---
 
     @GetMapping("/nombres")
-    public List<String> getNombres() {
-        return usuarioService.findAllNombres();
+    public ResponseEntity<List<String>> getNombres() {
+        return ResponseEntity.ok(usuarioService.findAllNombres());
     }
 
     @GetMapping("/correos")
-    public List<String> getCorreos() {
-        return usuarioService.findAllCorreos();
+    public ResponseEntity<List<String>> getCorreos() {
+        return ResponseEntity.ok(usuarioService.findAllCorreos());
     }
 
     @GetMapping("/roles")
-    public List<RolDto> getRoles() {
-        return usuarioService.findAllRoles();
+    public ResponseEntity<List<RolDto>> getRoles() {
+        return ResponseEntity.ok(usuarioService.findAllRoles());
     }
 }
