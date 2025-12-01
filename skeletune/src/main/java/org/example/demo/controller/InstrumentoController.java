@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/instrumentos")
+@RequestMapping("/skeletune/api/instrumentos")
 public class InstrumentoController {
 
     @Autowired

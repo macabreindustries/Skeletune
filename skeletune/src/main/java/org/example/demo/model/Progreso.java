@@ -1,7 +1,6 @@
 package org.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -9,11 +8,10 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "Progreso")
+@Data
+@NoArgsConstructor
 public class Progreso {
 
     @Id
@@ -34,9 +32,10 @@ public class Progreso {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    @Column(name = "duracion_minutos", columnDefinition = "INT DEFAULT 0")
-    private int duracionMinutos = 0;
+    @Column(name = "duracion_minutos")
+    private Integer duracionMinutos = 0;
 
+    @Lob
     @Column(name = "comentario", columnDefinition = "TEXT")
     private String comentario;
 }

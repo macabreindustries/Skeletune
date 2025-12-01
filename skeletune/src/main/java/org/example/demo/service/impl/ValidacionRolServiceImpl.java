@@ -50,10 +50,10 @@ public class ValidacionRolServiceImpl implements ValidacionRolService {
         dto.setFechaValidacion(validacion.getFechaValidacion());
         dto.setEstado(validacion.getEstado().name());
         if (validacion.getUsuarioValidado() != null) {
-            dto.setId_usuario_validado(validacion.getUsuarioValidado().getId_usuario());
+            dto.setId_usuario_validado(validacion.getUsuarioValidado().getId());
         }
         if (validacion.getAdminValidador() != null) {
-            dto.setId_admin_validador(validacion.getAdminValidador().getId_usuario());
+            dto.setId_admin_validador(validacion.getAdminValidador().getId());
         }
         return dto;
     }

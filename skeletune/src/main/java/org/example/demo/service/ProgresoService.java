@@ -7,13 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProgresoService {
-    List<ProgresoDto> findAll();
+
+    List<ProgresoDto> findAll(Integer idUsuario, Integer idLeccion, LocalDate fecha);
+
     ProgresoDto findById(Integer id);
-    List<ProgresoDto> findByUsuarioId(Integer idUsuario);
-    List<ProgresoDto> findByLeccionId(Integer idLeccion);
-    List<ProgresoDto> findByUsuarioIdAndFechaBetween(Integer idUsuario, LocalDate startDate, LocalDate endDate);
+
     ProgresoDto save(ProgresoDto progresoDto);
+
     ProgresoDto update(Integer id, ProgresoDto progresoDto);
+
     ProgresoDto patch(Integer id, Map<String, Object> updates);
+
     void deleteById(Integer id);
 }

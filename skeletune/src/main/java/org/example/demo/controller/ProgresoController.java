@@ -2,16 +2,17 @@ package org.example.demo.controller;
 
 import org.example.demo.dto.ProgresoDto;
 import org.example.demo.service.ProgresoService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/skeletune/api/progresos")
+@RequestMapping("/skeletune/api/progreso")
 public class ProgresoController {
 
     private final ProgresoService progresoService;
@@ -21,8 +22,12 @@ public class ProgresoController {
     }
 
     @GetMapping
-    public List<ProgresoDto> getAllProgresos() {
-        return progresoService.findAll();
+    public ResponseEntity<List<ProgresoDto>> getAllProgresos(
+            @RequestParam(required = false) Integer idUsuario,
+            @RequestParam(required = false) Integer idLeccion,
+            @RequestParam(required = false) LocalDate fecha) {
+        List<ProgresoDto> progresos = progresoService.findAll(idUsuario, idLeccion, fecha);
+        return ResponseEntity.ok(progresos);
     }
 
     @GetMapping("/{id}")
@@ -31,27 +36,14 @@ public class ProgresoController {
         return progresoDto != null ? ResponseEntity.ok(progresoDto) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/usuario/{idUsuario}")
-    public List<ProgresoDto> getProgresosByUsuarioId(@PathVariable Integer idUsuario) {
-        return progresoService.findByUsuarioId(idUsuario);
-    }
-
-    @GetMapping("/leccion/{idLeccion}")
-    public List<ProgresoDto> getProgresosByLeccionId(@PathVariable Integer idLeccion) {
-        return progresoService.findByLeccionId(idLeccion);
-    }
-
-    @GetMapping("/usuario/{idUsuario}/fecha")
-    public List<ProgresoDto> getProgresosByUsuarioIdAndFechaBetween(
-            @PathVariable Integer idUsuario,
-            @RequestParam LocalDate startDate,
-            @RequestParam LocalDate endDate) {
-        return progresoService.findByUsuarioIdAndFechaBetween(idUsuario, startDate, endDate);
-    }
-
     @PostMapping
-    public ProgresoDto createProgreso(@RequestBody ProgresoDto progresoDto) {
-        return progresoService.save(progresoDto);
+    public ResponseEntity<ProgresoDto> createProgreso(@RequestBody ProgresoDto progresoDto) {
+        ProgresoDto savedProgreso = progresoService.save(progresoDto);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedProgreso.getIdProgreso())
+                .toUri();
+        return ResponseEntity.created(location).body(savedProgreso);
     }
 
     @PutMapping("/{id}")

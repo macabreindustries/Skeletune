@@ -38,32 +38,27 @@ public class ProgresoServiceImpl implements ProgresoService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProgresoDto> findAll() {
-        return progresoRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());
+    public List<ProgresoDto> findAll(Integer idUsuario, Integer idLeccion, LocalDate fecha) {
+        List<Progreso> progresos;
+        if (idUsuario != null && fecha != null) {
+            progresos = progresoRepository.findByUsuarioAndFecha(idUsuario, fecha);
+        } else if (idUsuario != null) {
+            progresos = progresoRepository.findByUsuario_Id(idUsuario);
+        } else if (idLeccion != null) {
+            progresos = progresoRepository.findByLeccion_IdLeccion(idLeccion);
+        } else if (fecha != null) {
+            progresos = progresoRepository.findByFecha(fecha);
+        } else {
+            progresos = progresoRepository.findAll();
+        }
+        return progresos.stream().map(this::toDto).collect(Collectors.toList());
     }
 
     @Override
     @Transactional(readOnly = true)
     public ProgresoDto findById(Integer id) {
-        return progresoRepository.findById(id).map(this::toDto).orElse(null);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<ProgresoDto> findByUsuarioId(Integer idUsuario) {
-        return progresoRepository.findByUsuarioId(idUsuario).stream().map(this::toDto).collect(Collectors.toList());
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<ProgresoDto> findByLeccionId(Integer idLeccion) {
-        return progresoRepository.findByLeccionIdLeccion(idLeccion).stream().map(this::toDto).collect(Collectors.toList());
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<ProgresoDto> findByUsuarioIdAndFechaBetween(Integer idUsuario, LocalDate startDate, LocalDate endDate) {
-        return progresoRepository.findByUsuarioIdAndFechaBetween(idUsuario, startDate, endDate).stream().map(this::toDto).collect(Collectors.toList());
+        return progresoRepository.findById(id).map(this::toDto)
+                .orElseThrow(() -> new EntityNotFoundException("Progreso no encontrado con id: " + id));
     }
 
     @Override
@@ -85,13 +80,11 @@ public class ProgresoServiceImpl implements ProgresoService {
             }
             if (progresoDto.getIdLeccion() != null) {
                 Leccion leccion = leccionRepository.findById(progresoDto.getIdLeccion())
-                        .orElseThrow(() -> new EntityNotFoundException("Lección no encontrada con id: " + progresoDto.getIdLeccion()));
+                        .orElseThrow(() -> new EntityNotFoundException("Leccion no encontrada con id: " + progresoDto.getIdLeccion()));
                 existingProgreso.setLeccion(leccion);
-            } else {
-                existingProgreso.setLeccion(null);
             }
             return toDto(progresoRepository.save(existingProgreso));
-        }).orElse(null);
+        }).orElseThrow(() -> new EntityNotFoundException("Progreso no encontrado con id: " + id));
     }
 
     @Override
@@ -104,13 +97,9 @@ public class ProgresoServiceImpl implements ProgresoService {
                             .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + value));
                     existingProgreso.setUsuario(usuario);
                 } else if ("idLeccion".equals(key)) {
-                    if (value == null) {
-                        existingProgreso.setLeccion(null);
-                    } else {
-                        Leccion leccion = leccionRepository.findById((Integer) value)
-                                .orElseThrow(() -> new EntityNotFoundException("Lección no encontrada con id: " + value));
-                        existingProgreso.setLeccion(leccion);
-                    }
+                    Leccion leccion = leccionRepository.findById((Integer) value)
+                            .orElseThrow(() -> new EntityNotFoundException("Leccion no encontrada con id: " + value));
+                    existingProgreso.setLeccion(leccion);
                 } else {
                     Field field = ReflectionUtils.findField(Progreso.class, key);
                     if (field != null) {
@@ -121,12 +110,15 @@ public class ProgresoServiceImpl implements ProgresoService {
                 }
             });
             return toDto(progresoRepository.save(existingProgreso));
-        }).orElse(null);
+        }).orElseThrow(() -> new EntityNotFoundException("Progreso no encontrado con id: " + id));
     }
 
     @Override
     @Transactional
     public void deleteById(Integer id) {
+        if (!progresoRepository.existsById(id)) {
+            throw new EntityNotFoundException("No se puede eliminar el progreso con id: " + id + " porque no existe.");
+        }
         progresoRepository.deleteById(id);
     }
 
@@ -154,7 +146,7 @@ public class ProgresoServiceImpl implements ProgresoService {
         }
         if (dto.getIdLeccion() != null) {
             Leccion leccion = leccionRepository.findById(dto.getIdLeccion())
-                    .orElseThrow(() -> new EntityNotFoundException("Lección no encontrada con id: " + dto.getIdLeccion()));
+                    .orElseThrow(() -> new EntityNotFoundException("Leccion no encontrada con id: " + dto.getIdLeccion()));
             progreso.setLeccion(leccion);
         }
         return progreso;

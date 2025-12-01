@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/validaciones-rol")
+@RequestMapping("/skeletune/api/validaciones-rol")
 public class ValidacionRolController {
 
     @Autowired

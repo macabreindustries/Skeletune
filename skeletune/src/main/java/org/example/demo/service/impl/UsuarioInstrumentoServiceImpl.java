@@ -52,7 +52,7 @@ public class UsuarioInstrumentoServiceImpl implements UsuarioInstrumentoService 
 
     private UsuarioInstrumentoDto convertToDto(UsuarioInstrumento entity) {
         UsuarioInstrumentoDto dto = new UsuarioInstrumentoDto();
-        dto.setIdUsuario(entity.getUsuario().getId_usuario());
+        dto.setIdUsuario(entity.getUsuario().getId());
         dto.setIdInstrumento(entity.getInstrumento().getId_instrumento());
         dto.setNivel(entity.getNivel().name());
         return dto;
