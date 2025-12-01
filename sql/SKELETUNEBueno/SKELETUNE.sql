@@ -439,8 +439,8 @@ INSERT INTO Usuario(nombre, correo, contrasena, id_rol) VALUES
 
 INSERT INTO Instrumento(nombre_instrumento,tipo) VALUES
 ('Guitarra','Cuerdas'),
-('Piano','Teclas');
-
+('Piano','Teclas'),
+('Batería', 'Percusión');
 INSERT INTO Cancion(titulo, artista, id_admin)
 VALUES('Ejemplo Song', 'Anon', 1);
 
@@ -449,3 +449,64 @@ VALUES(2, 'Cómo afinar guitarra', 'https://youtube.com/example');
 
 INSERT INTO Leccion(titulo, id_cancion, id_video)
 VALUES('Lección 1', 1, 1);
+
+INSERT INTO ValidacionRol (id_usuario_validado, id_admin_validador, estado)
+VALUES (2, 1, 'pendiente');
+
+INSERT INTO UsuarioInstrumento (id_usuario, id_instrumento, nivel) 
+VALUES (3, 1, 'principiante');
+
+INSERT INTO Progreso (id_usuario, id_leccion, fecha, duracion_minutos, comentario) 
+VALUES (3, 1, '2025-12-01', 30, 'Practiqué la primera parte de la lección.');
+
+-- ============================================================
+-- INSERTS ADICIONALES DE PRUEBA
+-- ============================================================
+
+-- 9. NOVEDADES: El admin publica una novedad.
+INSERT INTO Novedad (id_admin, titulo, contenido, importancia) 
+VALUES (1, '¡Bienvenido a Skeletune!', 'Estamos muy contentos de tenerte aquí. Explora todas las funcionalidades.', 'alta');
+
+-- 10. ESTADÍSTICAS: Se inicializan las estadísticas para el alumno.
+INSERT INTO EstadisticaUsuario (id_usuario, total_minutos_practica, lecciones_completadas, canciones_aprendidas, racha_dias) 
+VALUES (3, 30, 1, 0, 1);
+
+-- 11. MEDIA: El profesor sube un video de una interpretación.
+INSERT INTO Media (id_usuario, tipo, url_archivo, descripcion) 
+VALUES (2, 'video', 'https://skeletune.com/media/profe_cover.mp4', 'Un pequeño cover de Ejemplo Song.');
+
+-- 12. PUBLICACIONES: El profesor crea una publicación con el video.
+INSERT INTO Publicacion (id_usuario, texto, id_media_principal) 
+VALUES (2, '¡Espero que les guste esta versión de Ejemplo Song!', 1);
+
+-- 13. PUBLICACION_MEDIA: Se asocia la media con la publicación (aunque ya esté como principal, para el ejemplo).
+INSERT INTO PublicacionMedia (id_publicacion, id_media) 
+VALUES (1, 1);
+
+-- 14. LIKES: Al alumno le gusta la publicación del profesor.
+INSERT INTO LikePublicacion (id_usuario, id_publicacion) 
+VALUES (3, 1);
+
+-- 15. COMENTARIOS: El alumno comenta en la publicación.
+INSERT INTO Comentario (id_publicacion, id_usuario, comentario) 
+VALUES (1, 3, '¡Suena increíble, profe!');
+
+-- 16. SEGUIDORES: El alumno comienza a seguir al profesor.
+INSERT INTO Seguidor (id_seguidor, id_seguido) 
+VALUES (3, 2);
+
+-- 17. MENSAJES PRIVADOS: El alumno envía un mensaje al profesor.
+INSERT INTO Mensaje (id_emisor, id_receptor, mensaje) 
+VALUES (3, 2, 'Hola profe, ¿podría darme algún consejo para la lección 1?');
+
+-- 18. HISTORIAS: El profesor sube una historia que expira en 24 horas.
+INSERT INTO Historia (id_usuario, id_media, expira_en) 
+VALUES (2, 1, NOW() + INTERVAL 1 DAY);
+
+-- 19. NOTIFICACIONES: Se genera una notificación para el profesor sobre el nuevo mensaje.
+INSERT INTO Notificacion (id_usuario, tipo, titulo, mensaje, id_referencia, tabla_referencia) 
+VALUES (2, 'mensaje', 'Nuevo Mensaje', 'Has recibido un nuevo mensaje de Alumno.', 1, 'Mensaje');
+
+-- 25. FALLOMANIA: Se registra un fallo en la partida.
+INSERT INTO FalloMania (id_partida_mania, tiempo_ms, tipo, desviacion_ms) 
+VALUES (1, 3000, 'late', 50);
