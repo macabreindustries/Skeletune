@@ -510,3 +510,21 @@ VALUES (2, 'mensaje', 'Nuevo Mensaje', 'Has recibido un nuevo mensaje de Alumno.
 -- 25. FALLOMANIA: Se registra un fallo en la partida.
 INSERT INTO FalloMania (id_partida_mania, tiempo_ms, tipo, desviacion_ms) 
 VALUES (1, 3000, 'late', 50);
+
+select * from usuario;
+
+ALTER TABLE Cancion 
+ADD COLUMN likes_count INT DEFAULT 0,
+ADD COLUMN views_count INT DEFAULT 0,
+ADD COLUMN swipes_count INT DEFAULT 0;
+
+
+CREATE TABLE Favoritos (
+    id_favorito INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_cancion INT NOT NULL,
+    fecha_agregado DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_cancion) REFERENCES Cancion(id_cancion) ON DELETE CASCADE,
+    UNIQUE(id_usuario, id_cancion) -- Evita que un usuario de likes dobles
+);
