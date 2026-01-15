@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".InicioSesion">
-
-
+    tools:context="com.example.skeletune.ui.auth.InicioSesion">
 
     <TextView
         android:layout_width="200dp"
@@ -24,6 +22,7 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:letterSpacing="0.1"/>
+
     <TextView
         android:layout_width="200dp"
         android:layout_height="30dp"
@@ -31,10 +30,11 @@
         android:text="Inicio de Sesión"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
+    <!-- ⚠️ CAMBIO: ID cambiado de "correoelectronico" a "editTextUsuario" -->
     <EditText
-        android:id="@+id/correoelectronico"
+        android:id="@+id/editTextUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa tu correo electronico o usuario"
@@ -44,8 +44,11 @@
         android:textColorHint="#9E9E9E"
         android:inputType="textEmailAddress"
         android:layout_margin="16dp"/>
+
+    <!-- ⚠️ CAMBIO: ID cambiado de "password" a "editTextContrasena" -->
+    <!-- ⚠️ CAMBIO: inputType cambiado de "textEmailAddress" a "textPassword" -->
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/editTextContrasena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa tu contraseña"
@@ -53,8 +56,18 @@
         android:padding="10dp"
         android:textColor="@android:color/black"
         android:textColorHint="#9E9E9E"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:layout_margin="16dp"/>
+
+    <!-- ⚠️ NUEVO: ProgressBar agregado -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        android:indeterminateTint="@color/white"/>
 
     <Button
         android:id="@+id/botonarol"
@@ -65,7 +78,7 @@
         android:backgroundTint="#292C3D"
         android:text="Continuar"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:cornerRadius="8dp" />
 
     <ImageView
@@ -86,22 +99,10 @@
         android:text="Continuar con Google"
         android:textColor="@color/black"
         android:drawableLeft="@drawable/googlelogo"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:cornerRadius="8dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/botonApple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="#EEEEEE"
-        android:textAlignment="viewStart"
-        android:text="Continuar con Apple"
-        android:drawableLeft="@drawable/applelogo"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:cornerRadius="8dp" />
+
 
     <TextView
         android:layout_marginTop="20dp"
@@ -110,10 +111,6 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:text="@string/texto_legal"
-        android:textSize="15dp" />
-
-
-
-
+        android:textSize="15sp" />
 
 </LinearLayout>

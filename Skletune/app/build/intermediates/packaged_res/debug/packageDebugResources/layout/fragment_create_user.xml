@@ -20,6 +20,7 @@
         android:fontFamily="cursive"
         android:gravity="center"
         android:letterSpacing="0.1"/>
+
     <TextView
         android:layout_marginTop="50dp"
         android:layout_width="200dp"
@@ -28,9 +29,12 @@
         android:text="Crea un usuario"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
+
+    <!-- ⚠️ CAMBIO: ID cambiado de "correoelectronico" a "editTextNombre" -->
+    <!-- ⚠️ CAMBIO: inputType cambiado de "textEmailAddress" a "textPersonName" -->
     <EditText
-        android:id="@+id/correoelectronico"
+        android:id="@+id/editTextNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ingresa tu nombre de usuario"
@@ -38,7 +42,7 @@
         android:padding="10dp"
         android:textColor="@android:color/black"
         android:textColorHint="#9E9E9E"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:layout_margin="16dp"/>
 
     <com.google.android.material.button.MaterialButton
@@ -50,7 +54,7 @@
         android:backgroundTint="#292C3D"
         android:text="Continuar"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:cornerRadius="8dp" />
 
 </LinearLayout>

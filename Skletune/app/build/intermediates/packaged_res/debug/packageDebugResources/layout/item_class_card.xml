@@ -1,138 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="5dp"
-    android:backgroundTint="#FFFFFF">
+    android:layout_height="72dp"
+    android:padding="8dp"
+    android:background="@android:color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/image_instructor_avatar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_instructor_avatar"
+        android:contentDescription="Avatar instructor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/text_instructor_nombre"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:text="Carlo Mendez"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image_instructor_avatar"
+        app:layout_constraintTop_toTopOf="@id/image_instructor_avatar"
+        app:layout_constraintEnd_toStartOf="@id/button_clase_menu"
+        android:layout_marginStart="12dp"
+        tools:text="Carlo Mendez"/>
 
-        <!-- NOMBRE DE LA CLASE -->
-        <TextView
-            android:id="@+id/tv_class_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acordes"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#111111" />
+    <TextView
+        android:id="@+id/text_clase_materia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Violín"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        app:layout_constraintStart_toStartOf="@id/text_instructor_nombre"
+        app:layout_constraintTop_toBottomOf="@id/text_instructor_nombre"
+        app:layout_constraintEnd_toStartOf="@id/text_clase_horario"
+        android:layout_marginTop="4dp"
+        tools:text="Violín"/>
 
-        <!-- HORARIO DE DÍAS CON ÍCONO -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/text_clase_horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawablePadding="6dp"
+        android:text="Mar 10:30"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:textColor="#757575"
+        app:layout_constraintEnd_toStartOf="@id/button_clase_menu"
+        app:layout_constraintTop_toTopOf="@id/text_instructor_nombre"
+        android:layout_marginEnd="8dp"
+        tools:text="Mar 10:30"/>
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_calendar"
-                app:tint="#555555" />
+    <TextView
+        android:id="@+id/text_clase_duracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_hour"
+        android:drawablePadding="6dp"
+        android:layout_marginTop="8dp"
+        android:text="60 min"
+        android:textSize="12sp"
+        android:textColor="#757575"
+        app:layout_constraintEnd_toStartOf="@id/button_clase_menu"
+        app:layout_constraintTop_toBottomOf="@id/text_clase_horario"
+        android:layout_marginEnd="8dp"
+        tools:text="60 min"/>
 
-            <TextView
-                android:id="@+id/tv_class_schedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lunes y Miércoles"
-                android:textSize="14sp"
-                android:textColor="#666666"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
+    <ImageButton
+        android:id="@+id/button_clase_menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_morevert"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Menu clase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <!-- SUBTARJETA DEL PROFESOR -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            android:backgroundTint="#F7F7F7">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:id="@+id/img_profesor"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/userphoto"
-                    android:padding="4dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Profesor"
-                        android:textSize="13sp"
-                        android:textColor="#777777" />
-
-                    <TextView
-                        android:id="@+id/tv_profesor_nombre"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mtro. Alejandro García"
-                        android:textSize="15sp"
-                        android:textColor="#222222" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- HORARIO DE HORAS CON ÍCONO -->
-
-        <!-- BOTÓN -->
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_olock"
-                app:tint="#555555" />
-
-            <TextView
-                android:id="@+id/tv_class_hour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="7:00 a 9:00 AM"
-                android:textColor="#666666"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_class_action"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Unirse"
-            android:backgroundTint="#000000"
-            android:textColor="#FFFFFF"
-            android:paddingHorizontal="14dp"
-            android:paddingVertical="6dp"
-            android:layout_gravity="end" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

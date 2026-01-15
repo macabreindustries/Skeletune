@@ -8,6 +8,9 @@
         android:minSdkVersion="30"
         android:targetSdkVersion="35" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <permission
         android:name="com.example.skletune.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -26,13 +29,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.Skletune" >
+        android:theme="@style/Theme.Skletune"
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.skletune.InicioSesion"
+            android:name="com.example.skeletune.ui.common.fragments.NavigationHostActivity"
             android:exported="false" />
-        <!-- 🔹 Splash: actividad que se ejecuta al iniciar la app -->
         <activity
-            android:name="com.example.skletune.splash"
+            android:name="com.example.skeletune.ui.auth.InicioSesion"
+            android:exported="false" />
+        <activity
+            android:name="com.example.skeletune.ui.common.fragments.splash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

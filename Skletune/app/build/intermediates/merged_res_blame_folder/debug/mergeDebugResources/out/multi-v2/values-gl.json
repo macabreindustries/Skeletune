@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.skletune.app-mergeDebugResources-48:/values-gl/values-gl.xml",
+            "outputFile": "com.example.skletune.app-mergeDebugResources-49:/values-gl/values-gl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\jesus\\.gradle\\caches\\8.10.2\\transforms\\1bac8957d614a6ff6664ec8178009486\\transformed\\core-1.13.0\\res\\values-gl\\values-gl.xml",
