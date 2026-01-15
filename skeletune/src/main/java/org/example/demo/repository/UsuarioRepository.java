@@ -6,9 +6,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional; // Importante para evitar errores de compilación
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
+    // Spring Data JPA generará la consulta automáticamente:
+    // "SELECT * FROM usuario WHERE correo = ?"
+    Optional<Usuario> findByCorreo(String correo);
+
+    // --- Métodos que ya tenías ---
     @Query("SELECT u.nombre FROM Usuario u")
     List<String> findAllNombres();
 

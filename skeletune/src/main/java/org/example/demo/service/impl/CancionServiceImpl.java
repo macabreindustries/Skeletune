@@ -174,4 +174,21 @@ public class CancionServiceImpl implements CancionService {
         }
         return cancion;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public CancionDto findRandom() {
+        return cancionRepository.findRandom().map(this::toDto)
+                .orElseThrow(() -> new EntityNotFoundException("No hay canciones disponibles"));
+    }
+
+    @Override
+    @Transactional
+    public void registrarInteraccion(Integer id, String tipo) {
+        switch (tipo.toLowerCase()) {
+            case "like": cancionRepository.incrementLikes(id); break;
+            case "view": cancionRepository.incrementViews(id); break;
+            case "swipe": cancionRepository.incrementSwipes(id); break;
+        }
+    }
 }

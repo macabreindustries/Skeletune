@@ -21,14 +21,17 @@ public class UsuarioDto {
     private String nombreRol;
 
     public static UsuarioDto fromEntity(Usuario u) {
+        if (u == null) return null;
+
         return UsuarioDto.builder()
                 .idUsuario(u.getId())
                 .nombre(u.getNombre())
                 .correo(u.getCorreo())
                 .contrasena(u.getContrasena())
                 .fechaRegistro(u.getFechaRegistro())
-                .idRol(u.getRol().getId())
-                .nombreRol(u.getRol().getNombre())
+                // Verificamos que el rol no sea nulo antes de pedirle el ID
+                .idRol(u.getRol() != null ? u.getRol().getId() : null)
+                .nombreRol(u.getRol() != null ? u.getRol().getNombre() : "SIN_ROL")
                 .build();
     }
     public Usuario toEntity(Rol rol) {

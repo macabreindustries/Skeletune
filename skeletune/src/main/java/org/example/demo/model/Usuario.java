@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +18,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private Integer id;
+    private Integer id; // Mantenlo así si tu repositorio ya usa "id"
 
     @Column(nullable = false)
     private String nombre;
@@ -30,11 +29,17 @@ public class Usuario {
     @Column(nullable = false)
     private String contrasena;
 
+    // Cambiamos esto para que Spring SI pueda manejar la fecha
     @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
 
     @ManyToOne
-    @JoinColumn(name = "id_rol", nullable = false,
-            foreignKey = @ForeignKey(name = "usuario_ibfk_1"))
+    @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
+
+    // Esto asegura que la fecha se ponga sola antes de guardar
+    @PrePersist
+    protected void onCreate() {
+        this.fechaRegistro = LocalDateTime.now();
+    }
 }

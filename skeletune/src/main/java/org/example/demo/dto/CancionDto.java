@@ -18,5 +18,9 @@ public class CancionDto implements Serializable { // Implementar Serializable
     private String urlPartitura;
     private String imagenUrl; // NUEVO CAMPO
     private Integer idAdmin;
+    private Integer likesCount;
+    private Integer viewsCount;
+    private Integer swipesCount;
+
 
 }

@@ -31,4 +31,7 @@ public interface CancionService {
     List<String> findAllUrlPartituras();
 
     List<String> findAllImagenUrls(); // Nuevo método
+
+    CancionDto findRandom();
+    void registrarInteraccion(Integer id, String tipo); // tipo: "like", "view", "swipe"
 }

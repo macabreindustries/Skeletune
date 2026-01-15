@@ -99,4 +99,17 @@ public class CancionController {
     public ResponseEntity<List<String>> getImagenUrls() {
         return ResponseEntity.ok(cancionService.findAllImagenUrls());
     }
+
+    @GetMapping("/aleatoria")
+    public ResponseEntity<CancionDto> getRandom() {
+        return ResponseEntity.ok(cancionService.findRandom());
+    }
+
+    @PostMapping("/{id}/interaccion")
+    public ResponseEntity<Void> interact(
+            @PathVariable Integer id,
+            @RequestParam String tipo) {
+        cancionService.registrarInteraccion(id, tipo);
+        return ResponseEntity.ok().build();
+    }
 }

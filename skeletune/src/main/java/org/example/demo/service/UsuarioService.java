@@ -14,6 +14,8 @@ public interface UsuarioService {
 
     UsuarioDto save(UsuarioDto usuarioDto);
 
+    UsuarioDto login(String correo, String contrasena);
+
     UsuarioDto update(Integer id, UsuarioDto usuarioDto);
 
     void delete(Integer id);

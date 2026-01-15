@@ -52,4 +52,13 @@ public class Cancion {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario admin;
 
+    @Column(name = "likes_count")
+    private Integer likesCount = 0;
+
+    @Column(name = "views_count")
+    private Integer viewsCount = 0;
+
+    @Column(name = "swipes_count")
+    private Integer swipesCount = 0;
+
 }
