@@ -3629,6 +3629,7 @@ drawable carru2
 drawable carru3
 drawable carru4
 drawable carru5
+drawable configuracion
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3656,6 +3657,7 @@ drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_chat
+drawable ic_circle_empty
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_close
@@ -3692,6 +3694,7 @@ drawable ic_notes
 drawable ic_notifications
 drawable ic_olock
 drawable ic_person
+drawable ic_placeholder_music
 drawable ic_profile
 drawable ic_return
 drawable ic_save
@@ -3699,8 +3702,10 @@ drawable ic_search
 drawable ic_search_black_24
 drawable ic_send
 drawable ic_settings
+drawable ic_streak_active
 drawable ic_tache
 drawable ic_ubi
+drawable ic_user_placeholder
 drawable ic_voz
 drawable icon
 drawable icon1
@@ -3790,6 +3795,8 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable profesor
+drawable square_active
+drawable square_inactive
 drawable tab_indicator_selector
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -3925,6 +3932,7 @@ id btn_atras
 id btn_cerrar_filtros
 id btn_history
 id btn_mostrar_filtros
+id btn_send_comment
 id btn_siguiente
 id btn_songs
 id buttonPanel
@@ -3945,6 +3953,7 @@ id cache_measures
 id callMeasure
 id cancel_button
 id card_banner_notificacion
+id card_carousel
 id card_chat_window
 id card_history
 id card_proxima_clase
@@ -4051,6 +4060,7 @@ id enterAlwaysCollapsed
 id entireSpace
 id escape
 id et_caption
+id et_new_comment
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -4076,6 +4086,7 @@ id fixed
 id flip
 id floating
 id forever
+id foto_perfil
 id fragment_container
 id fragment_container_view_tag
 id fragment_home_root
@@ -4105,6 +4116,8 @@ id honorRequest
 id horizontal
 id horizontal_only
 id hsv_contenedor_filtros
+id ic_configuracion
+id ic_ver_perfil
 id icon
 id icon_close_modal
 id icon_close_sheet
@@ -4130,6 +4143,7 @@ id image_post_options
 id image_proxima_clase_instructor
 id image_user_avatar
 id imgCarousel
+id img_post_grid
 id immediateStop
 id included
 id indeterminate
@@ -4156,6 +4170,7 @@ id iv_imagen_seleccionada
 id iv_media_preview
 id iv_miniatura
 id iv_songs_icon
+id iv_status_icon
 id iv_student_1
 id iv_student_2
 id iv_student_3
@@ -4320,6 +4335,7 @@ id percent
 id pin
 id position
 id postLayout
+id posts_recycler_view
 id pressed
 id progressBar
 id progress_bar
@@ -4344,6 +4360,7 @@ id root_asistente_ia_modal
 id rounded
 id row_index_key
 id rtl
+id rv_comments_modal
 id rv_week_status
 id save_non_transition_alpha
 id save_overlay_view
@@ -4419,6 +4436,7 @@ id supportScrollUp
 id swipe_buttons_layout
 id tabMode
 id tab_carousel_indicator
+id tab_layout
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -4502,6 +4520,7 @@ id toolbar_nueva_publicacion
 id toolbar_superior
 id top
 id topPanel
+id top_bar
 id top_center
 id touch_outside
 id transitionToEnd
@@ -4516,7 +4535,12 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tv_best_students_title
+id tv_day_initial
+id tv_followers_count
+id tv_following_count
 id tv_history_label
+id tv_likes_total
+id tv_profile_name
 id tv_select_subtitle
 id tv_select_title
 id tv_songs_label
@@ -4730,6 +4754,7 @@ layout fragment_nepublication
 layout fragment_newpostsettings
 layout fragment_newpublicationcargada
 layout fragment_options_plan
+layout fragment_profile
 layout fragment_racha
 layout fragment_rol_select
 layout fragment_socialmedia
@@ -4741,9 +4766,12 @@ layout item_carrusel
 layout item_chat_message
 layout item_class_card
 layout item_comment
+layout item_day_status
 layout item_post_card
+layout item_post_grid
 layout item_top_alumno
 layout layout_bottom_app_bar
+layout layout_comments_sheet
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

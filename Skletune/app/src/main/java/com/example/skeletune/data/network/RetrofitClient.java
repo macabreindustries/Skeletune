@@ -44,4 +44,8 @@ public class RetrofitClient {
     public ApiService getApiService() {
         return retrofit.create(ApiService.class);
     }
+    // Agrega esto para poder crear cualquier interfaz (como RachaApiService)
+    public Retrofit getRetrofit() {
+        return retrofit;
+    }
 }

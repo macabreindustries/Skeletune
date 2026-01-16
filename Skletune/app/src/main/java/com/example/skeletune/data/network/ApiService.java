@@ -19,6 +19,7 @@ import com.example.skeletune.data.model.PartidaMania;
 import com.example.skeletune.data.model.Progreso;
 import com.example.skeletune.data.model.Publicacion;
 import com.example.skeletune.data.model.PublicacionMedia;
+import com.example.skeletune.data.model.RachaDTO;
 import com.example.skeletune.data.model.Seguidor;
 import com.example.skeletune.data.model.Usuario;
 import com.example.skeletune.data.model.UsuarioInstrumento;
@@ -761,6 +762,8 @@ public interface ApiService {
     Call<List<Double>> getTodasLasAccuracies();
 
 
+    @GET("skeletune/api/racha/usuario/{id}")
+    Call<RachaDTO> obtenerRacha(@Path("id") int idUsuario);
 
 }
 

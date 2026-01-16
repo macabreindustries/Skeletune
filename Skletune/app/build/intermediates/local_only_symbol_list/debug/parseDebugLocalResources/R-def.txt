@@ -22,6 +22,7 @@ drawable carru2
 drawable carru3
 drawable carru4
 drawable carru5
+drawable configuracion
 drawable division
 drawable drawer
 drawable estudiante
@@ -37,6 +38,7 @@ drawable ic_bell
 drawable ic_book
 drawable ic_calendar
 drawable ic_chat
+drawable ic_circle_empty
 drawable ic_close
 drawable ic_comment
 drawable ic_container
@@ -60,14 +62,17 @@ drawable ic_notes
 drawable ic_notifications
 drawable ic_olock
 drawable ic_person
+drawable ic_placeholder_music
 drawable ic_profile
 drawable ic_return
 drawable ic_save
 drawable ic_search
 drawable ic_send
 drawable ic_settings
+drawable ic_streak_active
 drawable ic_tache
 drawable ic_ubi
+drawable ic_user_placeholder
 drawable ic_voz
 drawable icon
 drawable icon1
@@ -84,6 +89,8 @@ drawable input
 drawable like
 drawable notamusical
 drawable profesor
+drawable square_active
+drawable square_inactive
 drawable tab_indicator_selector
 drawable userphoto
 id actions_layout
@@ -108,6 +115,7 @@ id btn_atras
 id btn_cerrar_filtros
 id btn_history
 id btn_mostrar_filtros
+id btn_send_comment
 id btn_siguiente
 id btn_songs
 id button_clase_menu
@@ -124,6 +132,7 @@ id button_skip
 id button_tab_chat
 id button_tab_voice
 id card_banner_notificacion
+id card_carousel
 id card_chat_window
 id card_history
 id card_proxima_clase
@@ -151,6 +160,7 @@ id edit_notes
 id edit_text_chat_message
 id edit_time
 id et_caption
+id et_new_comment
 id fabCenter
 id fab_add_item
 id fab_assistant
@@ -159,6 +169,7 @@ id filtro_gingham
 id filtro_lark
 id filtro_moon
 id filtro_original
+id foto_perfil
 id fragment_container
 id fragment_home_root
 id fragment_music_swipe
@@ -167,6 +178,8 @@ id header_assistant
 id header_card
 id header_section
 id hsv_contenedor_filtros
+id ic_configuracion
+id ic_ver_perfil
 id icon_close_modal
 id icon_close_sheet
 id icon_comment
@@ -186,6 +199,7 @@ id image_post_options
 id image_proxima_clase_instructor
 id image_user_avatar
 id imgCarousel
+id img_post_grid
 id input_class_name
 id input_class_type
 id input_date
@@ -204,6 +218,7 @@ id iv_imagen_seleccionada
 id iv_media_preview
 id iv_miniatura
 id iv_songs_icon
+id iv_status_icon
 id iv_student_1
 id iv_student_2
 id iv_student_3
@@ -235,6 +250,7 @@ id option_agregar_musica
 id option_agregar_ubicacion
 id option_configuracion_avanzada
 id option_etiquetar_personas
+id posts_recycler_view
 id progressBar
 id progress_bar
 id recycler_comment_list
@@ -243,6 +259,7 @@ id recycler_view_chat
 id recycler_view_clases
 id recycler_view_top_alumnos
 id root_asistente_ia_modal
+id rv_comments_modal
 id rv_week_status
 id scroll_dashboard_root
 id scroll_form_content
@@ -253,6 +270,7 @@ id song_name
 id stats_layout
 id swipe_buttons_layout
 id tab_carousel_indicator
+id tab_layout
 id textViewIrALogin
 id text_alumno_detalles
 id text_alumno_nombre
@@ -300,8 +318,14 @@ id tituloDoc
 id toolbar
 id toolbar_nueva_publicacion
 id toolbar_superior
+id top_bar
 id tv_best_students_title
+id tv_day_initial
+id tv_followers_count
+id tv_following_count
 id tv_history_label
+id tv_likes_total
+id tv_profile_name
 id tv_select_subtitle
 id tv_select_title
 id tv_songs_label
@@ -357,6 +381,7 @@ layout fragment_nepublication
 layout fragment_newpostsettings
 layout fragment_newpublicationcargada
 layout fragment_options_plan
+layout fragment_profile
 layout fragment_racha
 layout fragment_rol_select
 layout fragment_socialmedia
@@ -366,9 +391,12 @@ layout item_carrusel
 layout item_chat_message
 layout item_class_card
 layout item_comment
+layout item_day_status
 layout item_post_card
+layout item_post_grid
 layout item_top_alumno
 layout layout_bottom_app_bar
+layout layout_comments_sheet
 menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_round

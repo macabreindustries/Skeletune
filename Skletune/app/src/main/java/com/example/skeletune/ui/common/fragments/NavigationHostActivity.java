@@ -72,7 +72,7 @@ public class NavigationHostActivity extends AppCompatActivity {
                 return false;
             } else if (itemId == R.id.nav_profile) {
                 // Aquí podrías cargar un ProfileFragment
-                return false;
+                selectedFragment = new profile();
             }
 
             if (selectedFragment != null) {

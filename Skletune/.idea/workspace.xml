@@ -5,6 +5,46 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/configuracion.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_circle_empty.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_placeholder_music.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_streak_active.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_user_placeholder.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/square_active.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/square_inactive.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_indicator_selector.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_inicio_sesion.xml">
         <config>
           <theme>@style/Theme.Skletune</theme>
@@ -125,6 +165,11 @@
           <theme>@style/Theme.Skletune</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_racha.xml">
         <config>
           <theme>@style/Theme.Skletune</theme>
@@ -170,7 +215,17 @@
           <theme>@style/Theme.Skletune</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_day_status.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_post_card.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_post_grid.xml">
         <config>
           <theme>@style/Theme.Skletune</theme>
         </config>
@@ -181,6 +236,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_bottom_app_bar.xml">
+        <config>
+          <theme>@style/Theme.Skletune</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_comments_sheet.xml">
         <config>
           <theme>@style/Theme.Skletune</theme>
         </config>
@@ -272,11 +332,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="navigationResourceFile" />
-        <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -416,12 +476,12 @@
       <map>
         <entry key="com.example.skletune">
           <value>
-            <CheckInfo lastCheckTimestamp="1768362554379" />
+            <CheckInfo lastCheckTimestamp="1768542338623" />
           </value>
         </entry>
         <entry key="com.example.skletune.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1768362554379" />
+            <CheckInfo lastCheckTimestamp="1768542338619" />
           </value>
         </entry>
       </map>
