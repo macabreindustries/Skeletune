@@ -6,12 +6,13 @@
     <dimen name="bottom_bar_height">70dp</dimen>
     <string name="alumnos">Alumnos</string>
     <string name="app_name">SkeletuneInicio</string>
-    <string name="assistant">Assitente personalizado</string>
+    <string name="assistant">Asistente personalizado</string>
     <string name="bienvenido">Bienvenido</string>
     <string name="canciones">Canciones</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="historial">Clases</string>
     <string name="imagen_dinamica">Imagen cargada desde el backend</string>
+    <string name="ir_a_login">¿Ya tienes cuenta? <font color="#8A2BE2">Inicia Sesión</font></string>
     <string name="like_song">Dar like a la canción</string>
     <string name="match_song">Agregar a favoritos la cancion</string>
     <string name="play_song1">Reproducir canción</string>
@@ -23,13 +24,12 @@
         <font color="#7457F5"> Términos </font> y
         <font color="#7457F5"> Política de privacidad</font>.
     </string>
-    <string name="texto_sesion">
-        ¿Ya tienes cuenta?
-        <font color="#7457F5"> Inicia Sesión </font>
-    </string>
     <style name="Base.Theme.Skletune" parent="Theme.Material3.DayNight.NoActionBar">
         
         
+    </style>
+    <style name="CircleImage">
+        <item name="cornerSize">50%</item>
     </style>
     <style name="Theme.Skeletune" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         

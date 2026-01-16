@@ -64,14 +64,15 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="#292C3D">
 
                     <ImageView
                         android:id="@+id/icon_student_person"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_person"
-                        app:tint="@android:color/black"
+                        android:src="@drawable/alumno_icon"
+                        app:tint="@android:color/white"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent" />
@@ -85,7 +86,8 @@
                         android:textColor="@android:color/darker_gray"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toEndOf="@id/icon_student_person"
-                        android:layout_marginStart="12dp" />
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/interm"/>
 
                     <TextView
                         android:id="@+id/text_student_name"
@@ -94,11 +96,12 @@
                         android:text="Juan"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/white"
                         app:layout_constraintTop_toBottomOf="@id/text_student_label"
                         app:layout_constraintStart_toEndOf="@id/icon_student_person"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/interm"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

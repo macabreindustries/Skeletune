@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.skletune.app-mergeDebugResources-49:/values-v16/values-v16.xml",
+            "outputFile": "com.example.skletune.app-mergeDebugResources-53:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\jesus\\.gradle\\caches\\8.10.2\\transforms\\e540bcbad38837e4bd99eed1a5089c7d\\transformed\\appcompat-1.7.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Lagsuz\\.gradle\\caches\\8.10.2\\transforms\\e540bcbad38837e4bd99eed1a5089c7d\\transformed\\appcompat-1.7.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -7,18 +7,17 @@
     android:layout_height="wrap_content"
     android:paddingVertical="12dp">
 
-    <!-- Avatar -->
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_comment_avatar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/ic_alumno"
         android:scaleType="centerCrop"
         android:layout_marginStart="16dp"
+        app:shapeAppearanceOverlay="@style/CircleImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Nombre usuario -->
     <TextView
         android:id="@+id/text_comment_user"
         android:layout_width="0dp"
@@ -26,33 +25,33 @@
         android:textStyle="bold"
         android:textSize="14sp"
         android:layout_marginStart="12dp"
-        android:textColor="@color/black"
+        android:layout_marginEnd="16dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@id/image_comment_avatar"
         app:layout_constraintTop_toTopOf="@id/image_comment_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="María López" />
 
-    <!-- Cuerpo del comentario -->
     <TextView
         android:id="@+id/text_comment_body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginStart="12dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="2dp"
-        android:textColor="@color/black"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/text_comment_user"
         app:layout_constraintStart_toEndOf="@id/image_comment_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="¡Me encanta esta foto! Está increíble 🔥🔥" />
 
-    <!-- Tiempo -->
     <TextView
         android:id="@+id/text_comment_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:textColor="#424242"
+        android:textColor="#757575"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@id/image_comment_avatar"

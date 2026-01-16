@@ -44,65 +44,28 @@
 
 
     <!-- TARJETA 1 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_songs"
-        android:layout_width="0dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toStartOf="@id/card_history"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_card">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <ImageView
-                android:id="@+id/iv_songs_icon"
-                android:layout_width="44dp"
-                android:layout_height="34dp"
-                android:contentDescription="@string/canciones"
-                android:src="@drawable/favorite_icon" />
-
-            <TextView
-                android:id="@+id/tv_songs_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="@string/canciones"
-                android:textStyle="bold"
-                android:textColor="#111111"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <!-- TARJETA 2 -->
+
+
+    <!-- CARRUSEL -->
     <androidx.cardview.widget.CardView
         android:id="@+id/card_history"
         android:layout_width="0dp"
         android:layout_height="85dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="108dp"
         app:cardCornerRadius="18dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintStart_toEndOf="@id/card_songs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header_card">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:padding="12dp">
 
             <ImageView
@@ -116,16 +79,14 @@
                 android:id="@+id/tv_history_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/alumnos"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:layout_marginStart="12dp"
-                android:textColor="#111111" />
+                android:text="@string/alumnos"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-
-    <!-- CARRUSEL -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_carousel"
         android:layout_width="0dp"
@@ -283,16 +244,6 @@
     </androidx.cardview.widget.CardView>
 
 
-    <!-- BOTÓN FLOTANTE -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_assistant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="100dp"
-        android:contentDescription="@string/assistant"
-        android:src="@drawable/assitant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

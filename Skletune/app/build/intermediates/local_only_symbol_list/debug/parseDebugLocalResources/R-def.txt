@@ -11,6 +11,8 @@ drawable applelogo
 drawable assistantavatar
 drawable assitant
 drawable b_person
+drawable background_enviar
+drawable background_upload
 drawable bg_black_circle
 drawable bg_bottom_sheet_rounded
 drawable borde_placeholder
@@ -24,6 +26,7 @@ drawable carru4
 drawable carru5
 drawable division
 drawable drawer
+drawable enviar
 drawable estudiante
 drawable favorite_icon
 drawable field
@@ -72,6 +75,7 @@ drawable ic_voz
 drawable icon
 drawable icon1
 drawable icon3
+drawable iconplay
 drawable imagesocial
 drawable img1
 drawable img2
@@ -86,6 +90,9 @@ drawable notamusical
 drawable profesor
 drawable tab_indicator_selector
 drawable userphoto
+font interlig
+font interm
+font pacifico
 id actions_layout
 id app_title
 id app_title_slogan
@@ -102,6 +109,7 @@ id bottomAppBar
 id bottomBarContainer
 id bottom_nav_view
 id btnBasic
+id btnGooglePay
 id btnPremium
 id btn_add_media
 id btn_atras
@@ -125,10 +133,11 @@ id button_tab_chat
 id button_tab_voice
 id card_banner_notificacion
 id card_chat_window
+id card_game_1
+id card_game_2
 id card_history
 id card_proxima_clase
 id card_resumen_alumnos
-id card_songs
 id card_streak
 id card_student_info
 id chart_container
@@ -145,7 +154,6 @@ id editTextCorreo
 id editTextNombre
 id editTextUsuario
 id edit_class_name
-id edit_comment_input
 id edit_date
 id edit_notes
 id edit_text_chat_message
@@ -153,7 +161,6 @@ id edit_time
 id et_caption
 id fabCenter
 id fab_add_item
-id fab_assistant
 id filtro_clarendon
 id filtro_gingham
 id filtro_lark
@@ -168,12 +175,10 @@ id header_card
 id header_section
 id hsv_contenedor_filtros
 id icon_close_modal
-id icon_close_sheet
 id icon_comment
 id icon_emoji
 id icon_like
 id icon_save
-id icon_send_comment
 id icon_student_person
 id icon_ubicacion
 id image_album
@@ -204,9 +209,11 @@ id iv_imagen_seleccionada
 id iv_media_preview
 id iv_miniatura
 id iv_songs_icon
+id iv_stats_graph
 id iv_student_1
 id iv_student_2
 id iv_student_3
+id iv_user_avatar
 id label_class_name
 id label_class_type
 id label_date
@@ -215,7 +222,6 @@ id label_instructor
 id label_notes
 id label_time
 id layout_chat_input
-id layout_comment_input
 id layout_contenido_inicial
 id layout_form_fields
 id layout_post_actions
@@ -237,7 +243,6 @@ id option_configuracion_avanzada
 id option_etiquetar_personas
 id progressBar
 id progress_bar
-id recycler_comment_list
 id recycler_feed_posts
 id recycler_view_chat
 id recycler_view_clases
@@ -248,7 +253,6 @@ id scroll_dashboard_root
 id scroll_form_content
 id scroll_home_teacher
 id section_streak
-id sheet_drag_handle
 id song_name
 id stats_layout
 id swipe_buttons_layout
@@ -268,7 +272,6 @@ id text_comment_body
 id text_comment_count
 id text_comment_time
 id text_comment_user
-id text_comments_title
 id text_dashboard_title
 id text_instructor_nombre
 id text_label_resumen
@@ -301,7 +304,12 @@ id toolbar
 id toolbar_nueva_publicacion
 id toolbar_superior
 id tv_best_students_title
+id tv_chart_title
 id tv_history_label
+id tv_ranking_email
+id tv_ranking_name
+id tv_score_game_1
+id tv_score_game_2
 id tv_select_subtitle
 id tv_select_title
 id tv_songs_label
@@ -311,25 +319,21 @@ id tv_student_1_email
 id tv_student_1_game1
 id tv_student_1_game2
 id tv_student_1_name
-id tv_student_1_points
+id tv_student_1_total_points
 id tv_student_2_email
 id tv_student_2_game1
 id tv_student_2_game2
 id tv_student_2_name
-id tv_student_2_points
-id tv_student_3_email
-id tv_student_3_game1
-id tv_student_3_game2
+id tv_student_2_total_points
 id tv_student_3_name
-id tv_student_3_points
 id tv_teacher_stats_title
+id tv_title_minijuegos
 id tv_titulo
 id tv_titulo_filtros
 id tv_username
 id tv_welcome
 id upload_area
 id videoView
-id view_header_separator
 id views_count
 id vp_carousel
 id vv_media_preview
@@ -339,7 +343,6 @@ layout activity_navigation_host
 layout activity_splash
 layout fragment_alumnos
 layout fragment_assistentia
-layout fragment_bottom_sheet_comments
 layout fragment_bottom_sheet_filtros
 layout fragment_certifications
 layout fragment_classes
@@ -348,6 +351,7 @@ layout fragment_create_user
 layout fragment_dialog_add_custom_class
 layout fragment_editorimage
 layout fragment_feed
+layout fragment_gamesrecords
 layout fragment_history
 layout fragment_home
 layout fragment_homeprofessor
@@ -357,6 +361,7 @@ layout fragment_nepublication
 layout fragment_newpostsettings
 layout fragment_newpublicationcargada
 layout fragment_options_plan
+layout fragment_plan_premium
 layout fragment_racha
 layout fragment_rol_select
 layout fragment_socialmedia
@@ -382,6 +387,7 @@ string canciones
 string hello_blank_fragment
 string historial
 string imagen_dinamica
+string ir_a_login
 string like_song
 string match_song
 string play_song1
@@ -389,8 +395,8 @@ string racha
 string reject_song
 string skip_song
 string texto_legal
-string texto_sesion
 style Base.Theme.Skletune
+style CircleImage
 style Theme.Skeletune
 style Theme.Skletune
 style TituloSeccion

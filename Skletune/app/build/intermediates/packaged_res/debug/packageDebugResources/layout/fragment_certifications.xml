@@ -12,8 +12,7 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:textSize="20dp"
-        android:textStyle="bold|italic"
-        android:fontFamily="cursive"
+        android:fontFamily="@font/interm"
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:text="Mis Certificaciones"/>
@@ -34,12 +33,13 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:src="@android:drawable/ic_menu_upload"
+                android:src="@drawable/background_upload"
                 android:layout_width="60dp"
                 android:layout_height="60dp"/>
 
             <TextView
                 android:text="Arrastra tu archivo aquí"
+                android:fontFamily="@font/interm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -118,6 +118,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="15dp"
+            android:fontFamily="@font/interlig"
+            android:textColor="@color/white"
             android:text="Titulo del Documento" />
 
         <EditText
@@ -136,7 +138,9 @@
             android:layout_width="match_parent"
             android:layout_height="15dp"
             android:layout_marginTop="10dp"
-            android:text="Titulo del Documento" />
+            android:text="Titulo del Documento"
+            android:fontFamily="@font/interlig"
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/tipoDoc"
@@ -154,7 +158,11 @@
             android:layout_width="match_parent"
             android:layout_height="15dp"
             android:layout_marginTop="10dp"
-            android:text="Titulo del Documento" />
+            android:text="Institución Emisora"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/interm"
+
+            />
 
         <EditText
             android:id="@+id/insEmisora"
@@ -166,7 +174,9 @@
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:textColor="@android:color/black"
-            android:textColorHint="#9E9E9E" />
+            android:textColorHint="#9E9E9E"
+
+            />
 
     </LinearLayout>
     <Button

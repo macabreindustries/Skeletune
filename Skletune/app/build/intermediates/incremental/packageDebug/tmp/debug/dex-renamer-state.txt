@@ -1,17 +1,17 @@
-#Wed Jan 14 17:18:43 CST 2026
-base.0=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.10=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.11=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.12=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.2=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
-base.3=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.4=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
-base.5=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
-base.6=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.7=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.8=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
-base.9=C\:\\Users\\jesus\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+#Thu Jan 15 20:44:25 CST 2026
+base.0=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.10=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+base.11=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.12=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.2=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
+base.3=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
+base.4=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
+base.5=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+base.6=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.7=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.8=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+base.9=C\:\\Users\\Lagsuz\\AndroidStudioProjects\\Skletune\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.10=8/classes.dex
