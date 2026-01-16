@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.skletune.app-mergeDebugResources-49:/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "com.example.skletune.app-mergeDebugResources-58:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\jesus\\.gradle\\caches\\8.10.2\\transforms\\e540bcbad38837e4bd99eed1a5089c7d\\transformed\\appcompat-1.7.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\ALDO\\.gradle\\caches\\8.10.2\\transforms\\e52faa6f0e4bd00c460156046e5b6269\\transformed\\appcompat-1.7.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

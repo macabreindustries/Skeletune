@@ -29,8 +29,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.Skletune"
+        android:theme="@style/Theme.Skeletune"
         android:usesCleartextTraffic="true" >
+
+        <!-- Actividades Principales de la App -->
         <activity
             android:name="com.example.skeletune.ui.common.fragments.NavigationHostActivity"
             android:exported="false" />
@@ -47,6 +49,51 @@
             </intent-filter>
         </activity>
 
+        <!-- Actividades del Minijuego OSU -->
+        <activity
+            android:name="com.example.skeletune.OSU.SongSelectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OSU" />
+        <activity
+            android:name="com.example.skeletune.OSU.GameActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OSU" />
+        <activity
+            android:name="com.example.skeletune.OSU.ResultsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OSU" />
+
+        <!-- Actividades de Mensajería -->
+        <activity
+            android:name="com.example.skeletune.ui.messaging.ChatDetailActivity"
+            android:exported="false" />
+
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.example.skletune.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.example.skletune.androidx-startup"
@@ -68,6 +115,10 @@
         <uses-library
             android:name="androidx.window.sidecar"
             android:required="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <receiver
             android:name="androidx.profileinstaller.ProfileInstallReceiver"

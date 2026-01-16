@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.skeletune.ui.student.home"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- Music Fragment (Game Records) -->
+    <fragment
+        android:id="@+id/nav_music"
+        android:name="com.example.skeletune.ui.common.fragments.gamesrecords"
+        android:label="Música"
+        tools:layout="@layout/fragment_gamesrecords" />
+
+    <!-- Notifications Fragment (This is our Activity/Chat list) -->
+    <fragment
+        android:id="@+id/nav_notifications"
+        android:name="com.example.skeletune.ui.common.fragments.ActivityFragment"
+        android:label="Actividad"
+        tools:layout="@layout/fragment_activity" >
+        <action
+            android:id="@+id/action_notifications_to_chatDetail"
+            app:destination="@id/chatDetailFragment" />
+    </fragment>
+
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.skeletune.ui.auth.login.LoginFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_login" />
+
+    <!-- Chat Detail Fragment -->
+    <fragment
+        android:id="@+id/chatDetailFragment"
+        android:name="com.example.skeletune.ui.common.fragments.ChatDetailFragment"
+        android:label="Chat" >
+        <argument
+            android:name="conversationId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

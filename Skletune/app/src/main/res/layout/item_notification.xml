@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/iv_notification_avatar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_centerVertical="true"
+        tools:src="@mipmap/ic_launcher_round" /> <!-- Placeholder -->
+
+    <TextView
+        android:id="@+id/tv_notification_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/iv_notification_avatar"
+        android:layout_toStartOf="@id/tv_notification_timestamp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        tools:text="a nebulanomad le ha gustado tu publicación."
+        android:textColor="#000000"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_notification_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/tv_notification_message"
+        tools:text="1 h"
+        android:textColor="#808080"
+        android:textSize="12sp"/>
+
+    <View
+        android:id="@+id/unread_dot_notification"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/blue_dot"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+</RelativeLayout>

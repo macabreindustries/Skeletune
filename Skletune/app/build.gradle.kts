@@ -36,6 +36,7 @@ dependencies {
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation ("androidx.gridlayout:gridlayout:1.0.0")
+    implementation(libs.firebase.firestore)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -55,6 +56,11 @@ dependencies {
 
     // Gson para parsear JSON
     implementation ("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("io.coil-kt:coil:2.6.0")
 
     // Testing
     testImplementation(libs.junit)

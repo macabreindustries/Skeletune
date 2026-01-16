@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,8 +13,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Skletune"
+        android:theme="@style/Theme.Skeletune"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- Actividades Principales de la App -->
         <activity
             android:name="com.example.skeletune.ui.common.fragments.NavigationHostActivity"
             android:exported="false" />
@@ -25,10 +29,29 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Actividades del Minijuego OSU -->
+        <activity
+            android:name="com.example.skeletune.OSU.SongSelectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OSU" />
+        <activity
+            android:name="com.example.skeletune.OSU.GameActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OSU" />
+        <activity
+            android:name="com.example.skeletune.OSU.ResultsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OSU" />
+
+        <!-- Actividades de Mensajería -->
+        <activity
+            android:name="com.example.skeletune.ui.messaging.ChatDetailActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
