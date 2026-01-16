@@ -4,7 +4,7 @@
 
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP DATABASE IF EXISTS skeletune;
+-- DROP DATABASE IF EXISTS skeletune;
 CREATE DATABASE skeletune CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE skeletune;
 
@@ -528,3 +528,98 @@ CREATE TABLE Favoritos (
     FOREIGN KEY (id_cancion) REFERENCES Cancion(id_cancion) ON DELETE CASCADE,
     UNIQUE(id_usuario, id_cancion) -- Evita que un usuario de likes dobles
 );
+
+select * from Favoritos;
+select * from Cancion;
+
+-- Limpiar tabla por si acaso (opcional)
+-- DELETE FROM Cancion;
+
+INSERT INTO Cancion (titulo, artista, dificultad, url_audio, url_partitura, imagen_url, id_admin, likes_count, views_count, swipes_count) 
+VALUES 
+('Blinding Lights', 'The Weeknd', 'media', 
+ 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
+ 'url_pdf_1', 
+ 'https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png', 
+ 1, 120, 500, 45),
+
+('Shape of You', 'Ed Sheeran', 'facil', 
+ 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', 
+ 'url_pdf_2', 
+ 'https://upload.wikimedia.org/wikipedia/en/4/45/Divide_cover.png', 
+ 1, 85, 320, 12),
+
+('Bohemian Rhapsody', 'Queen', 'dificil', 
+ 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', 
+ 'url_pdf_3', 
+ 'https://upload.wikimedia.org/wikipedia/en/9/9f/Bohemian_Rhapsody_cover.png', 
+ 1, 300, 1500, 80),
+
+('Levitating', 'Dua Lipa', 'media', 
+ 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', 
+ 'url_pdf_4', 
+ 'https://upload.wikimedia.org/wikipedia/en/f/f5/Dua_Lipa_-_Future_Nostalgia_%28Official_Album_Cover%29.png', 
+ 1, 95, 410, 30),
+
+('Stay', 'The Kid LAROI & Justin Bieber', 'facil', 
+ 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3', 
+ 'url_pdf_5', 
+ 'https://upload.wikimedia.org/wikipedia/en/0/07/The_Kid_Laroi_and_Justin_Bieber_-_Stay.png', 
+ 1, 150, 600, 55);
+ 
+ DELETE FROM Cancion WHERE id_cancion = 1;
+ 
+ INSERT INTO estadistica_usuario (id_usuario, canciones_aprendidas, racha_dias, total_minutos_practica, lecciones_completadas, nivel_general) 
+VALUES (1, 3, 120, 5, 'principiante');
+
+select * from estadistica_usuario;
+
+-- Practica de HOY (14 de enero)
+INSERT INTO progreso (id_usuario, fecha, duracion_minutos, comentario) 
+VALUES (1, '2026-01-14', 20, 'Practiqué la canción Stay');
+
+-- Practica de AYER (13 de enero)
+INSERT INTO progreso (id_usuario, fecha, duracion_minutos, comentario) 
+VALUES (1, '2026-01-13', 15, 'Lección de teoría básica');
+
+-- Practica de ANTIER (12 de enero)
+INSERT INTO progreso (id_usuario, fecha, duracion_minutos, comentario) 
+VALUES (1, '2026-01-12', 30, 'Práctica intensa de acordes');
+
+select * from progreso;
+
+select * from usuario; 
+
+
+ INSERT INTO estadistica_usuario (id_usuario, canciones_aprendidas, racha_dias, total_minutos_practica, lecciones_completadas, nivel_general) 
+VALUES (4, 3, 2, 120, 5, 'principiante');
+
+
+-- Practica de HOY (14 de enero)
+INSERT INTO progreso (id_usuario, fecha, duracion_minutos, comentario) 
+VALUES (4, '2026-01-14', 20, 'Practiqué la canción Stay');
+
+-- Practica de AYER (13 de enero)
+INSERT INTO progreso (id_usuario, fecha, duracion_minutos, comentario) 
+VALUES (4, '2026-01-13', 15, 'Lección de teoría básica');
+
+-- Practica de ANTIER (12 de enero)
+INSERT INTO progreso (id_usuario, fecha, duracion_minutos, comentario) 
+VALUES (4, '2026-01-12', 30, 'Práctica intensa de acordes');
+
+
+-- 1. Insertamos la imagen que se verá en el post
+INSERT INTO Media (id_usuario, tipo, url_archivo, descripcion) 
+VALUES (4, 'foto', 'https://images.unsplash.com/photo-1511379938547-c1f69419868d', 'Mi nueva guitarra');
+
+-- 2. Creamos la publicación vinculando el id_media que se acaba de crear (supongamos que es el 1)
+INSERT INTO Publicacion (id_usuario, texto, id_media_principal) 
+VALUES (4, '¡Hola a todos! Acabo de terminar mi primera lección de guitarra en Skeletune. ¡Súper recomendado!', 1);
+
+-- 3. Agregamos un like de otro usuario (ejemplo, usuario id 1 si existe)
+INSERT INTO LikePublicacion (id_usuario, id_publicacion) VALUES (1, 1);
+
+-- 4. Agregamos un comentario
+INSERT INTO Comentario (id_publicacion, id_usuario, comentario) 
+VALUES (1, 1, '¡Felicidades! Sigue practicando.');
+
