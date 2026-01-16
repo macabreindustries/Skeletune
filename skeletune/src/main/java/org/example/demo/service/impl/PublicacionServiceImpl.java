@@ -2,22 +2,22 @@ package org.example.demo.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
+import org.example.demo.dto.ComentarioResponseDto;
 import org.example.demo.dto.PublicacionDto;
-import org.example.demo.model.Media;
-import org.example.demo.model.Publicacion;
-import org.example.demo.model.Usuario;
-import org.example.demo.repository.MediaRepository;
-import org.example.demo.repository.PublicacionRepository;
-import org.example.demo.repository.UsuarioRepository;
+import org.example.demo.dto.PublicacionFeedDto;
+import org.example.demo.dto.UserProfileDto;
+import org.example.demo.model.*;
+import org.example.demo.repository.*;
 import org.example.demo.service.PublicacionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ReflectionUtils;
 
-import java.lang.reflect.Field;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,14 +26,24 @@ public class PublicacionServiceImpl implements PublicacionService {
     private final PublicacionRepository publicacionRepository;
     private final UsuarioRepository usuarioRepository;
     private final MediaRepository mediaRepository;
-    private final ObjectMapper objectMapper;
+    private final LikePublicacionRepository likePublicacionRepository;
+    private final ComentarioRepository comentarioRepository;
 
-    public PublicacionServiceImpl(PublicacionRepository publicacionRepository, UsuarioRepository usuarioRepository, MediaRepository mediaRepository, ObjectMapper objectMapper) {
+    public PublicacionServiceImpl(PublicacionRepository publicacionRepository,
+                                  UsuarioRepository usuarioRepository,
+                                  MediaRepository mediaRepository,
+                                  LikePublicacionRepository likePublicacionRepository,
+                                  ComentarioRepository comentarioRepository) {
         this.publicacionRepository = publicacionRepository;
         this.usuarioRepository = usuarioRepository;
         this.mediaRepository = mediaRepository;
-        this.objectMapper = objectMapper;
+        this.likePublicacionRepository = likePublicacionRepository;
+        this.comentarioRepository = comentarioRepository;
     }
+
+    // ============================================================
+    // CRUD MÉTODOS
+    // ============================================================
 
     @Override
     @Transactional(readOnly = true)
@@ -63,53 +73,14 @@ public class PublicacionServiceImpl implements PublicacionService {
     @Override
     @Transactional
     public PublicacionDto update(Integer id, PublicacionDto publicacionDto) {
-        return publicacionRepository.findById(id).map(existingPublicacion -> {
-            BeanUtils.copyProperties(publicacionDto, existingPublicacion, "idPublicacion", "fechaPublicacion", "usuario", "mediaPrincipal", "mediaAdjuntos");
-            if (publicacionDto.getIdUsuario() != null) {
-                Usuario usuario = usuarioRepository.findById(publicacionDto.getIdUsuario())
-                        .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + publicacionDto.getIdUsuario()));
-                existingPublicacion.setUsuario(usuario);
-            }
-            if (publicacionDto.getIdMediaPrincipal() != null) {
-                Media media = mediaRepository.findById(publicacionDto.getIdMediaPrincipal())
-                        .orElseThrow(() -> new EntityNotFoundException("Media no encontrada con id: " + publicacionDto.getIdMediaPrincipal()));
-                existingPublicacion.setMediaPrincipal(media);
-            } else {
-                existingPublicacion.setMediaPrincipal(null);
-            }
-            return toDto(publicacionRepository.save(existingPublicacion));
+        return publicacionRepository.findById(id).map(existing -> {
+            BeanUtils.copyProperties(publicacionDto, existing, "idPublicacion", "fechaPublicacion");
+            return toDto(publicacionRepository.save(existing));
         }).orElse(null);
     }
 
     @Override
-    @Transactional
-    public PublicacionDto patch(Integer id, Map<String, Object> updates) {
-        return publicacionRepository.findById(id).map(existingPublicacion -> {
-            updates.forEach((key, value) -> {
-                if ("idUsuario".equals(key)) {
-                    Usuario usuario = usuarioRepository.findById((Integer) value)
-                            .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + value));
-                    existingPublicacion.setUsuario(usuario);
-                } else if ("idMediaPrincipal".equals(key)) {
-                    if (value == null) {
-                        existingPublicacion.setMediaPrincipal(null);
-                    } else {
-                        Media media = mediaRepository.findById((Integer) value)
-                                .orElseThrow(() -> new EntityNotFoundException("Media no encontrada con id: " + value));
-                        existingPublicacion.setMediaPrincipal(media);
-                    }
-                } else {
-                    Field field = ReflectionUtils.findField(Publicacion.class, key);
-                    if (field != null) {
-                        field.setAccessible(true);
-                        Object convertedValue = objectMapper.convertValue(value, field.getType());
-                        ReflectionUtils.setField(field, existingPublicacion, convertedValue);
-                    }
-                }
-            });
-            return toDto(publicacionRepository.save(existingPublicacion));
-        }).orElse(null);
-    }
+    public PublicacionDto patch(Integer id, Map<String, Object> updates) { return null; }
 
     @Override
     @Transactional
@@ -117,67 +88,148 @@ public class PublicacionServiceImpl implements PublicacionService {
         publicacionRepository.deleteById(id);
     }
 
+    // ============================================================
+    // SOCIAL MEDIA LOGIC (Feed, Likes, Comentarios, Perfil)
+    // ============================================================
+
     @Override
-    @Transactional
-    public void addMediaToPublicacion(Integer idPublicacion, Integer idMedia) {
-        Publicacion publicacion = publicacionRepository.findById(idPublicacion)
-                .orElseThrow(() -> new EntityNotFoundException("Publicacion no encontrada con id: " + idPublicacion));
-        Media media = mediaRepository.findById(idMedia)
-                .orElseThrow(() -> new EntityNotFoundException("Media no encontrada con id: " + idMedia));
-        publicacion.getMediaAdjuntos().add(media);
-        publicacionRepository.save(publicacion);
+    @Transactional(readOnly = true)
+    public List<PublicacionFeedDto> getSocialFeed() {
+        List<Publicacion> publicaciones = publicacionRepository.findAll();
+        return publicaciones.stream().map(this::mapToFeedDto).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserProfileDto getUserProfile(Integer idUsuario) {
+        Usuario user = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+
+        UserProfileDto dto = new UserProfileDto();
+        dto.setNombre(user.getNombre());
+        dto.setUrlAvatar(user.getUrlAvatar());
+
+        // Obtener publicaciones del usuario convertidas a FeedDto (para el grid)
+        List<Publicacion> misPubsEntidad = publicacionRepository.findByUsuarioId(idUsuario);
+        List<PublicacionFeedDto> misPubsDto = misPubsEntidad.stream()
+                .map(this::mapToFeedDto)
+                .collect(Collectors.toList());
+
+        dto.setMisPublicaciones(misPubsDto);
+        dto.setSiguiendoCount(0); // Pendiente implementación lógica seguidores
+        dto.setSeguidoresCount(0);
+
+        int totalLikes = misPubsDto.stream().mapToInt(PublicacionFeedDto::getLikesCount).sum();
+        dto.setTotalLikesRecibidos(totalLikes);
+
+        return dto;
     }
 
     @Override
     @Transactional
-    public void removeMediaFromPublicacion(Integer idPublicacion, Integer idMedia) {
-        Publicacion publicacion = publicacionRepository.findById(idPublicacion)
-                .orElseThrow(() -> new EntityNotFoundException("Publicacion no encontrada con id: " + idPublicacion));
-        Media media = mediaRepository.findById(idMedia)
-                .orElseThrow(() -> new EntityNotFoundException("Media no encontrada con id: " + idMedia));
-        publicacion.getMediaAdjuntos().remove(media);
-        publicacionRepository.save(publicacion);
+    public void toggleLike(Integer idPublicacion, Integer idUsuario) {
+        Optional<LikePublicacion> existingLike = likePublicacionRepository
+                .findByUsuarioIdAndPublicacionIdPublicacion(idUsuario, idPublicacion);
+
+        if (existingLike.isPresent()) {
+            likePublicacionRepository.delete(existingLike.get());
+        } else {
+            LikePublicacion nuevoLike = new LikePublicacion();
+            Usuario user = usuarioRepository.findById(idUsuario)
+                    .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+            Publicacion pub = publicacionRepository.findById(idPublicacion)
+                    .orElseThrow(() -> new EntityNotFoundException("Post no encontrado"));
+
+            nuevoLike.setUsuario(user);
+            nuevoLike.setPublicacion(pub);
+            likePublicacionRepository.save(nuevoLike);
+        }
+    }
+
+    @Override
+    @Transactional
+    public ComentarioResponseDto saveComentario(Integer idPublicacion, Integer idUsuario, String texto) {
+        Publicacion pub = publicacionRepository.findById(idPublicacion)
+                .orElseThrow(() -> new EntityNotFoundException("Publicación no encontrada"));
+        Usuario user = usuarioRepository.findById(idUsuario)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado"));
+
+        Comentario nuevo = new Comentario();
+        nuevo.setPublicacion(pub);
+        nuevo.setUsuario(user);
+        nuevo.setComentario(texto);
+        Comentario guardado = comentarioRepository.save(nuevo);
+
+        ComentarioResponseDto dto = new ComentarioResponseDto();
+        dto.setComentario(guardado.getComentario());
+        dto.setNombreUsuario(user.getNombre());
+        dto.setAvatarUrl(user.getUrlAvatar());
+        dto.setFechaRelativa("Ahora mismo");
+        return dto;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ComentarioResponseDto> getComentariosByPublicacionId(Integer idPublicacion) {
+        return comentarioRepository.findByPublicacionIdPublicacion(idPublicacion).stream().map(c -> {
+            ComentarioResponseDto dto = new ComentarioResponseDto();
+            dto.setComentario(c.getComentario());
+            if (c.getUsuario() != null) {
+                dto.setNombreUsuario(c.getUsuario().getNombre());
+                dto.setAvatarUrl(c.getUsuario().getUrlAvatar());
+            }
+            dto.setFechaRelativa(c.getFechaComentario() != null ?
+                    calcularTiempoRelativo(c.getFechaComentario()) : "Reciente");
+            return dto;
+        }).collect(Collectors.toList());
+    }
+
+    // ============================================================
+    // MÉTODOS DE MAPEO Y AUXILIARES
+    // ============================================================
+
+    private PublicacionFeedDto mapToFeedDto(Publicacion pub) {
+        PublicacionFeedDto dto = new PublicacionFeedDto();
+        dto.setIdPublicacion(pub.getIdPublicacion());
+        dto.setTextoBody(pub.getTexto());
+        dto.setTiempoPublicacion(pub.getFechaPublicacion() != null ?
+                calcularTiempoRelativo(pub.getFechaPublicacion()) : "Reciente");
+
+        if (pub.getUsuario() != null) {
+            dto.setNombreUsuario(pub.getUsuario().getNombre());
+            dto.setAvatarUrl(pub.getUsuario().getUrlAvatar());
+        }
+        if (pub.getMediaPrincipal() != null) {
+            dto.setImageUrlContent(pub.getMediaPrincipal().getUrlArchivo());
+        }
+
+        dto.setLikesCount((int) likePublicacionRepository.countByPublicacionIdPublicacion(pub.getIdPublicacion()));
+        dto.setCommentsCount((int) comentarioRepository.countByPublicacionIdPublicacion(pub.getIdPublicacion()));
+        return dto;
+    }
+
+    private String calcularTiempoRelativo(LocalDateTime fecha) {
+        Duration duration = Duration.between(fecha, LocalDateTime.now());
+        if (duration.toMinutes() < 1) return "Ahora";
+        if (duration.toMinutes() < 60) return "Hace " + duration.toMinutes() + " min";
+        if (duration.toHours() < 24) return "Hace " + duration.toHours() + " h";
+        return "Hace " + duration.toDays() + " d";
     }
 
     private PublicacionDto toDto(Publicacion publicacion) {
         PublicacionDto dto = new PublicacionDto();
-        BeanUtils.copyProperties(publicacion, dto, "usuario", "mediaPrincipal", "mediaAdjuntos");
-        if (publicacion.getUsuario() != null) {
-            dto.setIdUsuario(publicacion.getUsuario().getId());
-        }
-        if (publicacion.getMediaPrincipal() != null) {
-            dto.setIdMediaPrincipal(publicacion.getMediaPrincipal().getIdMedia());
-        }
-        if (publicacion.getMediaAdjuntos() != null) {
-            dto.setMediaAdjuntosIds(publicacion.getMediaAdjuntos().stream()
-                    .map(Media::getIdMedia)
-                    .collect(Collectors.toSet()));
-        }
+        BeanUtils.copyProperties(publicacion, dto, "usuario", "mediaPrincipal");
+        if (publicacion.getUsuario() != null) dto.setIdUsuario(publicacion.getUsuario().getId());
+        if (publicacion.getMediaPrincipal() != null) dto.setIdMediaPrincipal(publicacion.getMediaPrincipal().getIdMedia());
         return dto;
     }
 
     private Publicacion toEntity(PublicacionDto dto) {
-        Publicacion publicacion = new Publicacion();
-        BeanUtils.copyProperties(dto, publicacion, "idUsuario", "idMediaPrincipal", "mediaAdjuntosIds");
-        if (dto.getIdUsuario() != null) {
-            Usuario usuario = usuarioRepository.findById(dto.getIdUsuario())
-                    .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + dto.getIdUsuario()));
-            publicacion.setUsuario(usuario);
-        } else {
-            throw new IllegalArgumentException("El campo idUsuario no puede ser nulo.");
-        }
-        if (dto.getIdMediaPrincipal() != null) {
-            Media media = mediaRepository.findById(dto.getIdMediaPrincipal())
-                    .orElseThrow(() -> new EntityNotFoundException("Media no encontrada con id: " + dto.getIdMediaPrincipal()));
-            publicacion.setMediaPrincipal(media);
-        }
-        if (dto.getMediaAdjuntosIds() != null) {
-            dto.getMediaAdjuntosIds().forEach(idMedia -> {
-                Media media = mediaRepository.findById(idMedia)
-                        .orElseThrow(() -> new EntityNotFoundException("Media no encontrada con id: " + idMedia));
-                publicacion.getMediaAdjuntos().add(media);
-            });
-        }
-        return publicacion;
+        Publicacion p = new Publicacion();
+        BeanUtils.copyProperties(dto, p);
+        return p;
     }
+
+    @Override public void addMediaToPublicacion(Integer idPub, Integer idMedia) {}
+    @Override public void removeMediaFromPublicacion(Integer idPub, Integer idMedia) {}
 }

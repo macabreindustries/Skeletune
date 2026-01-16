@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface EstadisticaUsuarioRepository extends JpaRepository<EstadisticaUsuario, Integer> {
-    Optional<EstadisticaUsuario> findByUsuarioId(Integer idUsuario);
+    // El guion bajo (_) es el separador de navegación para evitar ambigüedades
+    Optional<EstadisticaUsuario> findByUsuario_Id(Integer idUsuario);
 }

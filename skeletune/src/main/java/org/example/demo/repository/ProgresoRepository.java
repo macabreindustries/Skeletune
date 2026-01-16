@@ -23,4 +23,7 @@ public interface ProgresoRepository extends JpaRepository<Progreso, Integer> {
     // Corrected the path from 'p.usuario.idUsuario' to 'p.usuario.id'
     @Query("SELECT p FROM Progreso p WHERE p.usuario.id = :idUsuario AND p.fecha = :fecha")
     List<Progreso> findByUsuarioAndFecha(@Param("idUsuario") Integer idUsuario, @Param("fecha") LocalDate fecha);
+
+    @Query("SELECT DISTINCT p.fecha FROM Progreso p WHERE p.usuario.id = :idUsuario AND p.fecha >= :desde")
+    List<LocalDate> findActividadReciente(@Param("idUsuario") Integer idUsuario, @Param("desde") LocalDate desde);
 }

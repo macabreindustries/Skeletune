@@ -32,7 +32,8 @@ public class EstadisticaUsuarioServiceImpl implements EstadisticaUsuarioService 
     @Override
     @Transactional(readOnly = true)
     public EstadisticaUsuarioDto getEstadisticasByUsuarioId(Integer idUsuario) {
-        return estadisticaUsuarioRepository.findByUsuarioId(idUsuario)
+        // CORRECCIÓN: Se cambió findByIdUsuario por findByUsuario_Id
+        return estadisticaUsuarioRepository.findByUsuario_Id(idUsuario)
                 .map(this::toDto)
                 .orElseThrow(() -> new EntityNotFoundException("Estadísticas no encontradas para el usuario con id: " + idUsuario));
     }
@@ -43,7 +44,8 @@ public class EstadisticaUsuarioServiceImpl implements EstadisticaUsuarioService 
         Usuario usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + idUsuario));
 
-        if (estadisticaUsuarioRepository.findByUsuarioId(idUsuario).isPresent()) {
+        // CORRECCIÓN: Se cambió findByIdUsuario por findByUsuario_Id
+        if (estadisticaUsuarioRepository.findByUsuario_Id(idUsuario).isPresent()) {
             throw new IllegalStateException("Las estadísticas para este usuario ya existen.");
         }
 
@@ -55,13 +57,18 @@ public class EstadisticaUsuarioServiceImpl implements EstadisticaUsuarioService 
     @Override
     @Transactional
     public EstadisticaUsuarioDto updateEstadisticas(Integer idUsuario, EstadisticaUsuarioDto estadisticaDto) {
-        return estadisticaUsuarioRepository.findByUsuarioId(idUsuario).map(existingEstadistica -> {
-            // Solo se actualizan los campos que no son el ID y la fecha de actualización
+        // CORRECCIÓN: Se cambió findByIdUsuario por findByUsuario_Id
+        return estadisticaUsuarioRepository.findByUsuario_Id(idUsuario).map(existingEstadistica -> {
             existingEstadistica.setTotalMinutosPractica(estadisticaDto.getTotalMinutosPractica());
             existingEstadistica.setLeccionesCompletadas(estadisticaDto.getLeccionesCompletadas());
             existingEstadistica.setCancionesAprendidas(estadisticaDto.getCancionesAprendidas());
             existingEstadistica.setRachaDias(estadisticaDto.getRachaDias());
-            existingEstadistica.setNivelGeneral(estadisticaDto.getNivelGeneral());
+
+            // CORRECCIÓN: Manejo de Enum para evitar errores de cast
+            if (estadisticaDto.getNivelGeneral() != null) {
+                existingEstadistica.setNivelGeneral(estadisticaDto.getNivelGeneral());
+            }
+
             return toDto(estadisticaUsuarioRepository.save(existingEstadistica));
         }).orElseThrow(() -> new EntityNotFoundException("Estadísticas no encontradas para el usuario con id: " + idUsuario));
     }
@@ -69,7 +76,8 @@ public class EstadisticaUsuarioServiceImpl implements EstadisticaUsuarioService 
     @Override
     @Transactional
     public EstadisticaUsuarioDto patchEstadisticas(Integer idUsuario, Map<String, Object> updates) {
-        return estadisticaUsuarioRepository.findByUsuarioId(idUsuario).map(existingEstadistica -> {
+        // CORRECCIÓN: Se cambió findByIdUsuario por findByUsuario_Id
+        return estadisticaUsuarioRepository.findByUsuario_Id(idUsuario).map(existingEstadistica -> {
             updates.forEach((key, value) -> {
                 Field field = ReflectionUtils.findField(EstadisticaUsuario.class, key);
                 if (field != null) {

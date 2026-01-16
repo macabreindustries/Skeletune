@@ -42,4 +42,7 @@ public class Usuario {
     protected void onCreate() {
         this.fechaRegistro = LocalDateTime.now();
     }
+
+    @Column(name = "url_avatar")
+    private String urlAvatar = "https://i.imgur.com/Heidi26.png"; // Imagen por defecto
 }
