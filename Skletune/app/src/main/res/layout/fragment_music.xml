@@ -14,21 +14,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MusicSwipe"
-        android:textStyle="bold|italic"
-        android:fontFamily="cursive"
+        android:fontFamily="@font/interlig"
         android:textSize="28sp"
         android:textColor="#000000"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <TextView
         android:id="@+id/app_title_slogan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Descubre tu proxima cancion favorita"
+        android:text="Descubre tu próxima canción favorita"
         android:textSize="18sp"
-        android:textColor="#333222"
+        android:textColor="#949DA9"
+        android:fontFamily="@font/interlig"
+        android:letterSpacing="-0.02"
         android:ellipsize="end"
         android:singleLine="true"
         android:gravity="center"
@@ -36,7 +38,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp" />
-
     <!-- IMAGEN DEL ÁLBUM -->
     <ImageView
         android:id="@+id/image_album"
