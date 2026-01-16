@@ -1,92 +1,51 @@
 package com.example.skeletune.data.model;
 
+import com.google.gson.annotations.SerializedName;
+import java.time.LocalDateTime;
+
 public class Notificacion {
+
+    // El enum 'Tipo' debe coincidir con el del backend
+    public enum Tipo {
+        NUEVO_SEGUIDOR,
+        LIKE_PUBLICACION,
+        COMENTARIO_PUBLICACION,
+        MENSAJE_NUEVO
+    }
+
+    @SerializedName("idNotificacion")
     private Integer idNotificacion;
+
+    @SerializedName("idUsuario")
     private Integer idUsuario;
+
+    @SerializedName("tipo")
     private Tipo tipo;
+
+    @SerializedName("titulo")
     private String titulo;
+
+    @SerializedName("mensaje")
     private String mensaje;
+
+    @SerializedName("idReferencia")
     private Integer idReferencia;
+
+    @SerializedName("tablaReferencia")
     private String tablaReferencia;
-    private String fecha;
+
+    @SerializedName("fecha")
+    private LocalDateTime fecha;
+
+    @SerializedName("leido")
     private boolean leido;
 
-    public enum Tipo { MENSAJE, LIKE, SEGUIDOR, LECCION, SISTEMA }
-
-    public Notificacion() {}
-
-    // Getters y Setters...
-
-
-    public Integer getIdNotificacion() {
-        return idNotificacion;
-    }
-
-    public void setIdNotificacion(Integer idNotificacion) {
-        this.idNotificacion = idNotificacion;
-    }
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Tipo getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    public Integer getIdReferencia() {
-        return idReferencia;
-    }
-
-    public void setIdReferencia(Integer idReferencia) {
-        this.idReferencia = idReferencia;
-    }
-
-    public String getTablaReferencia() {
-        return tablaReferencia;
-    }
-
-    public void setTablaReferencia(String tablaReferencia) {
-        this.tablaReferencia = tablaReferencia;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public boolean isLeido() {
-        return leido;
-    }
-
-    public void setLeido(boolean leido) {
-        this.leido = leido;
-    }
+    // --- Getters ---
+    public Integer getIdNotificacion() { return idNotificacion; }
+    public Integer getIdUsuario() { return idUsuario; }
+    public Tipo getTipo() { return tipo; }
+    public String getTitulo() { return titulo; }
+    public String getMensaje() { return mensaje; }
+    public LocalDateTime getFecha() { return fecha; }
+    public boolean isLeido() { return leido; }
 }

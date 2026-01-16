@@ -1,29 +1,39 @@
 package com.example.skeletune.data.model;
 
+import com.google.gson.annotations.SerializedName;
+import java.time.LocalDateTime;
+
 public class Mensaje {
+
+    @SerializedName("idMensaje")
     private Integer idMensaje;
+
+    @SerializedName("idEmisor")
     private Integer idEmisor;
+
+    @SerializedName("idReceptor")
     private Integer idReceptor;
+
+    @SerializedName("mensaje")
     private String mensaje;
+
+    @SerializedName("idMedia")
     private Integer idMedia;
-    private String fechaEnvio;
+
+    @SerializedName("fechaEnvio")
+    private LocalDateTime fechaEnvio;
+
+    @SerializedName("visto")
     private boolean visto;
 
-    public Mensaje() {}
-
-    // Getters y Setters
+    // --- Getters ---
     public Integer getIdMensaje() { return idMensaje; }
-    public void setIdMensaje(Integer idMensaje) { this.idMensaje = idMensaje; }
     public Integer getIdEmisor() { return idEmisor; }
-    public void setIdEmisor(Integer idEmisor) { this.idEmisor = idEmisor; }
     public Integer getIdReceptor() { return idReceptor; }
-    public void setIdReceptor(Integer idReceptor) { this.idReceptor = idReceptor; }
     public String getMensaje() { return mensaje; }
-    public void setMensaje(String mensaje) { this.mensaje = mensaje; }
-    public Integer getIdMedia() { return idMedia; }
-    public void setIdMedia(Integer idMedia) { this.idMedia = idMedia; }
-    public String getFechaEnvio() { return fechaEnvio; }
-    public void setFechaEnvio(String fechaEnvio) { this.fechaEnvio = fechaEnvio; }
+    public LocalDateTime getFechaEnvio() { return fechaEnvio; }
     public boolean isVisto() { return visto; }
+
+    // --- Setters (pueden ser útiles) ---
     public void setVisto(boolean visto) { this.visto = visto; }
 }

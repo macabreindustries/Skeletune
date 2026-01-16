@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true"
+    tools:context=".ui.common.fragments.gamesrecords">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título de Minijuegos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Minijuegos"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- Tarjetas de Minijuegos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_game_1"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Minijuego 1"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Jugar"
+                        android:textColor="#000000"
+                        android:textSize="28sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Puedes añadir más tarjetas de juegos aquí -->
+
+        </LinearLayout>
+
+        <!-- Tarjeta de Estadísticas Personales -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estadísticas Personales (Minijuego 1)"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <!-- Contenedor para las estadísticas -->
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:columnCount="2"
+                    android:rowCount="3">
+
+                    <!-- Partidas Jugadas -->
+                    <TextView
+                        style="@style/EstadisticaIcono"
+                        android:text="🎮"/>
+                    <TextView
+                        android:id="@+id/tv_total_partidas"
+                        style="@style/EstadisticaValor"
+                        tools:text="128"/>
+                    <TextView
+                        style="@style/EstadisticaLabel"
+                        android:text="Partidas"/>
+
+                    <!-- Puntaje Máximo -->
+                    <TextView
+                        style="@style/EstadisticaIcono"
+                        android:text="🏆"/>
+                    <TextView
+                        android:id="@+id/tv_puntaje_maximo"
+                        style="@style/EstadisticaValor"
+                        tools:text="1,2M"/>
+                    <TextView
+                        style="@style/EstadisticaLabel"
+                        android:text="Max Puntaje"/>
+                    
+                    <!-- Precisión Promedio -->
+                    <TextView
+                        style="@style/EstadisticaIcono"
+                        android:text="🎯"/>
+                    <TextView
+                        android:id="@+id/tv_promedio_accuracy"
+                        style="@style/EstadisticaValor"
+                        tools:text="98.5%"/>
+                    <TextView
+                        style="@style/EstadisticaLabel"
+                        android:text="Precisión"/>
+
+                </GridLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Puedes añadir más tarjetas o vistas aquí -->
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
